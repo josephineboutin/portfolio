@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="fr" class="pro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Portfolio de Joséphine Boutin, stratégie de marque pour le sport, la glisse et l'outdoor.">
+<title>Joséphine Boutin, portfolio</title>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@1&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+
+/* Layout : ouverture plein écran avec la courbe en fond et le choix de lecture, cartes des études, étude de cas en chapitres avec une barre de chapitres collante, bande de visuels horizontale, bande jaune, conclusion en preuves décalées, signature et contacts. */
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #FFFFFF; }
+@property --fg { syntax: "<color>"; inherits: true; initial-value: #111110; }
+@property --soft { syntax: "<color>"; inherits: true; initial-value: #4E5D61; }
+@property --surface { syntax: "<color>"; inherits: true; initial-value: #EEF4F5; }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: #111110; }
+@property --field { syntax: "<color>"; inherits: true; initial-value: #DCE8EA; }
+@property --zw { syntax: "<number>"; inherits: true; initial-value: 340; }
+@property --zls { syntax: "<length-percentage>"; inherits: true; initial-value: 0em; }
+
+:root {
+  /* Palette validée */
+  --jaune: #FFF133;
+  --jaune-pale: #FFF7B0;
+  --encre: #111110;
+  --galet: #F3F3EF;
+  --ocean: #16323A;
+  --ocean-profond: #0C1E24;
+  --gris-clair: #B4B3AA;
+  /* Rôles, lecture Stratégie */
+  --bg: #FFFFFF;
+  --fg: #111110;
+  --soft: #4E5D61;
+  --surface: #EEF4F5;
+  --ink: #111110;
+  --field: #DCE8EA;
+  --zw: 340;
+  --curvefill: #FFF7B0;
+  --zls: 0em;
+  /* Polices validées */
+  --f-sig: "Zodiak-Variable", "Zodiak", Georgia, "Times New Roman", serif;
+  --f-titre: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-texte: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.65, 0, .25, 1);
+  --t: 700ms;
+  color-scheme: light;
+  transition: --bg var(--t) var(--ease), --fg var(--t) var(--ease), --soft var(--t) var(--ease),
+              --surface var(--t) var(--ease), --ink var(--t) var(--ease), --field var(--t) var(--ease),
+              --zw 1100ms var(--ease), --zls 1100ms var(--ease);
+}
+:root[data-lecture="terrain"] {
+  --bg: #0C1E24;
+  --fg: #F3F3EF;
+  --soft: #A3B6BA;
+  --surface: #13303A;
+  --field: #275868;
+  --ink: #FFF133;
+  --zw: 900;
+  --zls: -0.025em;
+  color-scheme: dark;
+}
+:root.instant, :root.instant *, :root.instant *::before, :root.instant *::after { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  :root { transition: none; }
+  *, *::before, *::after { transition-duration: 0ms !important; animation: none !important; }
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; overflow-x: clip; background: var(--bg); color: var(--fg); font-family: var(--f-texte); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+/* Grille : une seule colonne de contenu de 1240 px au plus, des marges latérales qui grandissent avec l'écran, et une échelle d'espacements unique */
+:root { --gut: clamp(20px, 5vw, 72px); --maxw: 1240px; --edge: max(var(--gut), (100vw - var(--maxw)) / 2); --s-section: clamp(72px, 9vw, 128px); --s-block: clamp(32px, 4vw, 56px); --s-gap: 24px; }
+.wrap { max-width: calc(var(--maxw) + 2 * var(--gut)); box-sizing: border-box; margin-inline: auto; padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); }
+p, blockquote, figure { margin: 0; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ocean); outline-offset: 3px; border-radius: 4px; }
+:root[data-lecture="terrain"] :focus-visible { outline-color: var(--jaune); }
+
+.titre { font-family: var(--f-titre); font-weight: 700; line-height: 1.02; }
+.disp { font-family: var(--f-sig); font-weight: var(--zw); letter-spacing: var(--zls); line-height: .96; text-wrap: balance; }
+.lbl { font-size: 15px; font-weight: 700; color: var(--soft); }
+.hl { background: linear-gradient(transparent 58%, var(--jaune) 58%); padding-inline: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hl-lead { background: var(--jaune); color: var(--encre); padding: 1px 6px; border-radius: 4px; }
+:root[data-lecture="terrain"] .hl.hl-lead { background: var(--jaune); color: var(--encre); }
+:root[data-lecture="terrain"] .hl { background: none; color: var(--jaune); }
+.check { font-size: .8em; font-weight: 700; background: var(--jaune-pale); color: var(--encre); padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+
+/* Barre */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 25; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; min-height: 40px; }
+.brand { font-family: var(--f-sig); font-weight: 800; font-size: 22px; text-decoration: none; white-space: nowrap; }
+.progress { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--ocean); transform-origin: 0 50%; transform: scaleX(0); }
+:root[data-lecture="terrain"] .progress { background: var(--jaune); }
+.toggle { position: relative; display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); border-radius: 999px; padding: 4px; flex-shrink: 0; transition: opacity 400ms var(--ease), transform 400ms var(--ease); }
+.toggle.away { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+.toggle button { position: relative; z-index: 1; appearance: none; border: 0; background: none; font-family: var(--f-texte); font-weight: 700; font-size: 15px; color: var(--fg); padding: 9px 18px; border-radius: 999px; cursor: pointer; transition: color var(--t) var(--ease); }
+.toggle button[aria-pressed="true"] { color: var(--encre); }
+.toggle .knob { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background: var(--jaune); transition: transform var(--t) var(--ease); }
+:root[data-lecture="terrain"] .toggle .knob { transform: translateX(100%); }
+@media (max-width: 420px) { .toggle button { padding: 8px 12px; font-size: 14px; } .brand { font-size: 17px; } }
+
+/* Diptyque */
+.duo { display: grid; }
+.duo > .v, .tracks > .v { grid-area: 1 / 1; min-width: 0; transition: opacity 520ms var(--ease), transform 620ms var(--ease), filter 520ms var(--ease), visibility 0s linear 0s; }
+:root:not([data-lecture="terrain"]) .duo > .v[data-v="terrain"],
+:root[data-lecture="terrain"] .duo > .v[data-v="strategie"],
+:root:not([data-lecture="terrain"]) .tracks > .v[data-v="terrain"],
+:root[data-lecture="terrain"] .tracks > .v[data-v="strategie"] {
+  opacity: 0; transform: translateY(14px); filter: blur(4px); visibility: hidden; pointer-events: none;
+  transition: opacity 360ms var(--ease), transform 360ms var(--ease), filter 360ms var(--ease), visibility 0s linear 360ms;
+}
+
+/* Scènes avec courbe en fond */
+.stage { position: relative; overflow: hidden; }
+.curve { position: absolute; inset: 0; }
+.curve canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stage > .wrap { position: relative; z-index: 1; pointer-events: none; }
+.stage > .wrap a, .stage > .wrap button { pointer-events: auto; }
+.pin { position: absolute; z-index: 3; width: 30px; height: 30px; margin: -15px 0 0 -15px; border: 0; padding: 0; background: none; cursor: pointer; opacity: 0; transform: scale(.4); transition: opacity 400ms var(--ease), transform 500ms var(--ease); }
+.pin.on { opacity: 1; transform: none; }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.25); opacity: .25; } }
+.pin::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; border: 2px solid var(--jaune); animation: pulse 2.6s var(--ease) infinite; }
+.pin::before { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: var(--jaune); box-shadow: 0 0 0 3px var(--encre); transition: transform 250ms var(--ease); }
+.pin.formation::before { background: var(--ocean); box-shadow: 0 0 0 3px var(--encre), inset 0 0 0 2px #FFFFFF; }
+.pin.formation::after { border-color: var(--ocean); }
+.pin.suite::before { background: #FFFFFF; box-shadow: 0 0 0 3px var(--encre); }
+.pin:hover::before, .pin:focus-visible::before, .pin[aria-expanded="true"]::before { transform: scale(1.35); }
+:root[data-lecture="terrain"] .pin, :root[data-lecture="terrain"] .pin.on { opacity: 0; pointer-events: none; }
+.pin-label { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); white-space: nowrap; font-family: var(--f-texte); font-weight: 700; font-size: 13px; color: var(--encre); background: #FFFFFF; padding: 2px 9px; border-radius: 999px; box-shadow: 0 1px 4px rgba(17,17,16,.14); pointer-events: none; }
+.pin.below .pin-label { bottom: auto; top: 30px; }
+@media (max-width: 760px) { .pin-label { display: none; } }
+.tip { position: absolute; z-index: 6; pointer-events: none; width: min(340px, 80vw); background: var(--encre); color: var(--galet); border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 1.5; box-shadow: 0 10px 30px rgba(17,17,16,.2); }
+.tip strong { display: block; font-family: var(--f-titre); font-size: 22px; line-height: 1.1; color: var(--jaune); margin-bottom: 4px; }
+.tip .when { display: block; font-weight: 700; color: var(--gris-clair); font-size: 13px; margin-bottom: 2px; }
+.tick, .axis { position: absolute; z-index: 2; font-size: 13px; font-weight: 700; color: var(--soft); white-space: nowrap; pointer-events: none; transition: opacity 400ms var(--ease); }
+.tick { transform: translateX(-50%); }
+.axis { font-weight: 400; }
+.curve-title { position: absolute; z-index: 2; margin: 0; font-size: clamp(24px, 2.4vw, 32px); color: var(--fg); pointer-events: none; }
+.legend-pins { position: absolute; z-index: 2; left: var(--edge); display: flex; gap: 14px; font-size: 13px; font-weight: 700; color: var(--soft); pointer-events: none; transition: opacity 400ms var(--ease); }
+.legend-pins i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; box-shadow: 0 0 0 2px var(--encre); }
+@media (max-width: 760px) { .curve[data-curve="newave"] .tick { display: none; } }
+:root[data-lecture="terrain"] .tick, :root[data-lecture="terrain"] .axis, :root[data-lecture="terrain"] .legend-pins { opacity: 0; }
+
+/* Ouverture */
+.hero .stage-text { padding-block: var(--s-block) 0; display: grid; gap: var(--s-gap); }
+.hero .who { font-size: clamp(52px, 8vw, 112px); line-height: .9; }
+.hero h1 { font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; max-width: 30em; }
+.hero .intro { font-size: 18px; max-width: 60ch; }
+.chooser { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 16px; margin-top: 8px; }
+@media (max-width: 560px) { .chooser { grid-template-columns: 1fr 1fr; } }
+.choice { appearance: none; text-align: left; border: 2px solid var(--fg); background: var(--bg); color: var(--fg); border-radius: 16px; padding: 14px 16px; cursor: pointer; display: grid; gap: 4px; font-family: var(--f-texte); transition: background var(--t) var(--ease), color var(--t) var(--ease), transform 250ms var(--ease), border-color var(--t) var(--ease); }
+.choice:hover { transform: translateY(-3px); }
+.choice b { font-family: var(--f-sig); font-weight: 800; font-size: 26px; line-height: 1; }
+.choice span { font-size: 14px; line-height: 1.4; }
+.choice[aria-pressed="true"] { background: var(--jaune); color: var(--encre); border-color: var(--jaune); }
+.hero .stage-foot { height: clamp(280px, 30vw, 380px); }
+
+/* Cartes */
+.projects { padding-block: var(--s-section); display: grid; gap: var(--s-block); }
+.projects > h2 { font-size: clamp(30px, 3.4vw, 42px); }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-gap); }
+@media (max-width: 880px) { .cards { grid-template-columns: 1fr; } }
+.card { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 18px; min-height: 320px; padding: 24px; text-decoration: none; overflow: hidden; border-radius: 16px; background: var(--surface); isolation: isolate; transition: color 400ms var(--ease), transform 400ms var(--ease); }
+.card .ph { position: absolute; inset: 0; z-index: -1; opacity: 0; transform: scale(1.06); transition: opacity 500ms var(--ease), transform 900ms var(--ease); }
+.card .ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,17,16,.1), rgba(17,17,16,.78)); }
+.card h3 { font-size: clamp(26px, 2.6vw, 32px); }
+.card .meta { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-size: 15px; }
+.card .go { font-weight: 700; display: inline-flex; gap: 8px; }
+.card .go i { font-style: normal; transition: transform 300ms var(--ease); }
+.card .pill { justify-self: start; font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 999px; background: var(--jaune); color: var(--encre); }
+.card .soon { color: var(--soft); }
+.card .ph-label { position: absolute; top: 20px; right: 20px; font-size: 13px; font-weight: 700; color: var(--galet); opacity: 0; transition: opacity 400ms var(--ease); }
+@media (hover: hover) {
+  .card:hover, .card:focus-visible { color: var(--galet); transform: translateY(-4px); }
+  .card:hover .ph, .card:focus-visible .ph { opacity: 1; transform: scale(1); }
+  .card:hover .soon, .card:focus-visible .soon { color: var(--gris-clair); }
+  .card:hover .go i, .card:focus-visible .go i { transform: translateX(6px); }
+  .card:hover .ph-label, .card:focus-visible .ph-label { opacity: .85; }
+}
+@media (hover: none) { .card { color: var(--galet); } .card .ph { opacity: 1; transform: none; } .card .soon { color: var(--gris-clair); } .card .ph-label { opacity: .85; } }
+.ph-a { background: radial-gradient(120% 90% at 75% 110%, #2D6D78 0%, #16323A 50%, #0B1A1F 100%); }
+.ph-b { background: radial-gradient(90% 90% at 20% 100%, #4A5A3A 0%, #2A2F26 50%, #161714 100%); }
+.ph-c { background: radial-gradient(80% 80% at 70% 30%, #6A5D2C 0%, #332D1A 50%, #171510 100%); }
+.ph-d { background: linear-gradient(180deg, #9FC3C9 0%, #3E6E78 45%, #16323A 100%); }
+.ph-e { background: radial-gradient(90% 80% at 50% 0%, #FFF133 0%, #C9A92B 35%, #3A3015 100%); }
+.doc-a { background: linear-gradient(160deg, #FFFFFF 0%, #EEF4F5 100%); }
+.doc-b { background: linear-gradient(160deg, #FFF7B0 0%, #FFFFFF 100%); }
+.doc-c { background: linear-gradient(160deg, #DCE8EA 0%, #FFFFFF 100%); }
+
+/* Étude de cas */
+.case-stage .stage-text { padding-block: var(--s-section) 0; display: grid; gap: var(--s-gap); }
+.case-stage .facts { pointer-events: auto; margin-top: 8px; }
+.case-stage h2 { font-size: clamp(40px, 5.6vw, 76px); max-width: 18ch; }
+.case-stage .stage-foot { height: clamp(320px, 36vw, 440px); }
+.case-head { padding-block: 24px 40px; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-gap); margin: 0; }
+.facts > div { background: color-mix(in srgb, var(--surface) 92%, transparent); border-radius: 14px; padding: 18px 20px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.facts dt { font-size: 14px; font-weight: 700; color: var(--soft); }
+.facts dd { margin: 0; font-size: 16px; line-height: 1.5; }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
+
+/* Barre de chapitres */
+.chapbar { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 68px); z-index: 15; }
+.chapbar .wrap { display: flex; align-items: center; justify-content: center; gap: 16px; padding-block: 8px; }
+.chapbar .inner { display: flex; align-items: center; gap: 14px; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 999px; padding: 6px 8px 6px 14px; box-shadow: 0 4px 18px rgba(17,17,16,.08); max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.chapbar canvas { width: 120px; height: 40px; flex: 0 0 auto; }
+.chapbar a { flex: 0 0 auto; text-decoration: none; font-weight: 700; font-size: 15px; padding: 7px 14px; border-radius: 999px; color: var(--soft); transition: background 300ms var(--ease), color 300ms var(--ease); }
+.chapbar a b { font-family: var(--f-sig); font-weight: 800; margin-right: 6px; }
+.chapbar a.on { background: var(--jaune); color: var(--encre); }
+@media (max-width: 640px) { .chapbar canvas { display: none; } .chapbar a { font-size: 14px; padding: 6px 10px; } }
+
+.chap { padding-block: var(--s-section); scroll-margin-top: 110px; }
+.chap.alt { background: var(--surface); }
+.chap .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--s-block); }
+@media (max-width: 860px) { .chap .wrap { grid-template-columns: 1fr; gap: var(--s-gap); } }
+.chap-head { display: grid; gap: 10px; align-content: start; }
+.chap-num { font-family: var(--f-sig); font-weight: var(--zw); font-size: clamp(64px, 8vw, 120px); line-height: .8; color: var(--ink); }
+.chap-head h3 { font-size: clamp(38px, 4.4vw, 58px); }
+.chip { justify-self: start; font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 999px; background: var(--surface); }
+.chap.alt .chip, .chap.alt .aside, .chap.alt .kpis > div, .chap.alt .spec span { background: var(--bg); }
+.v { display: grid; gap: 24px; align-content: start; }
+.v p { max-width: 62ch; }
+.cite { display: grid; gap: 8px; }
+.cite blockquote { font-family: var(--f-sig); font-style: italic; font-weight: 500; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.22; max-width: 30ch; }
+.cite.big blockquote { font-weight: 900; font-size: clamp(34px, 4.2vw, 56px); line-height: 1; color: var(--ink); }
+.cite cite { max-width: 62ch; }
+.heard { display: grid; gap: 10px; justify-items: start; }
+.heard q { quotes: "« " " »"; font-family: var(--f-sig); font-style: italic; font-weight: 500; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.35; background: var(--surface); padding: 10px 16px; border-radius: 16px 16px 16px 4px; max-width: 46ch; }
+.heard q:nth-of-type(2) { margin-left: clamp(16px, 4vw, 48px); }
+.chap.alt .heard q { background: var(--bg); }
+.kpis.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .kpis.three { grid-template-columns: 1fr; } }
+.cite cite { font-style: normal; font-size: 14px; font-weight: 700; color: var(--soft); }
+.aside { background: var(--surface); border-radius: 14px; padding: 18px 20px; font-size: 16px; max-width: 62ch; }
+.aside b { display: block; margin-bottom: 2px; }
+.spec { display: flex; flex-wrap: wrap; gap: 8px; }
+.spec span { font-size: 15px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: var(--surface); }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.kpis > div { background: var(--surface); border-radius: 14px; padding: 18px 18px 16px; display: grid; gap: 6px; min-width: 0; }
+.kpis b { font-family: var(--f-sig); font-weight: 800; white-space: nowrap; font-size: clamp(26px, 2.9vw, 40px); line-height: 1; font-variant-numeric: tabular-nums; }
+.kpis span { font-size: 15px; color: var(--soft); }
+@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.since { margin-top: 0; background: var(--ocean); color: var(--galet); border-radius: 16px; padding: 22px 24px; display: grid; gap: 8px; max-width: 760px; }
+.since h4 { font-family: var(--f-titre); font-size: 26px; color: var(--jaune); }
+
+/* Bande horizontale */
+.tracks > .v, :root .tracks > .v[data-v] { transition: opacity 520ms var(--ease), filter 520ms var(--ease), visibility 0s linear 0s !important; }
+:root:not([data-lecture="terrain"]) .tracks > .v[data-v="terrain"], :root[data-lecture="terrain"] .tracks > .v[data-v="strategie"] { transition: opacity 360ms var(--ease), filter 360ms var(--ease), visibility 0s linear 360ms !important; }
+.band { position: relative; }
+.band .sticky { position: sticky; top: 0; height: 100vh; box-sizing: border-box; padding-top: 72px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: 24px; }
+.band-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; padding-top: 70px; }
+.band-head h3 { font-size: clamp(40px, 4.6vw, 62px); }
+.tracks { display: grid; }
+.tracks > .v { grid-area: 1 / 1; }
+.track-h { display: flex; gap: var(--s-gap); padding-left: var(--edge); padding-right: var(--edge); will-change: transform; width: max-content; }
+.shot { flex: 0 0 min(78vw, calc((100vh - 300px) * 4 / 3)); display: grid; gap: 12px; align-content: start; }
+@media (max-width: 640px) { .track-h .shot { flex-basis: min(80vw, calc((100vh - 320px) * 4 / 5)); } .track-h .shot .img { aspect-ratio: 4 / 5; } }
+.shot .img { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 16px; position: relative; overflow: hidden; }
+.shot .img span { position: absolute; left: 16px; bottom: 14px; font-size: 14px; font-weight: 700; color: var(--galet); }
+.shot .img.doc { box-shadow: inset 0 0 0 2px var(--field); }
+.shot .img.doc span { color: var(--encre); }
+.shot figcaption { font-size: 16px; line-height: 1.45; max-width: 44ch; display: grid; gap: 4px; }
+.shot figcaption b { display: block; font-size: 14px; line-height: 1.3; color: var(--soft); }
+.band.static .sticky { position: static; height: auto; padding-block: var(--s-section); }
+.band.static .track-h { overflow-x: auto; width: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
+.band.static .shot { scroll-snap-align: start; }
+
+/* Bande jaune et autocritique */
+.yellow { background: var(--jaune); color: var(--encre); }
+.yellow .wrap { padding-block: var(--s-section); display: grid; gap: var(--s-gap); }
+.yellow .retiens { font-size: clamp(28px, 3vw, 40px); }
+.yellow .lesson { font-family: var(--f-sig); font-weight: 800; font-size: clamp(30px, 4.6vw, 60px); line-height: 1.06; max-width: 22ch; }
+.yellow .lbl, .yellow cite { color: var(--encre); }
+.yellow cite { font-style: normal; font-weight: 700; font-size: 15px; }
+.redo { padding-block: 80px; }
+.redo .box { background: var(--surface); border-radius: 20px; padding: clamp(22px, 3vw, 40px); display: grid; gap: 22px; }
+.redo h3 { font-size: clamp(30px, 3.4vw, 42px); }
+.redo ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: r; }
+.redo li { counter-increment: r; display: grid; gap: 8px; align-content: start; }
+.redo li::before { content: counter(r); font-family: var(--f-sig); font-weight: 800; font-size: 44px; line-height: 1; color: var(--ink); }
+.redo li b { font-family: var(--f-titre); font-size: 22px; line-height: 1.1; }
+@media (max-width: 860px) { .redo ol { grid-template-columns: 1fr; } }
+
+/* Conclusion */
+.end { padding-block: var(--s-section) 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-gap); }
+.end h2 { font-size: clamp(40px, 5.6vw, 76px); max-width: 16ch; }
+.end .lead { font-size: 20px; max-width: 56ch; }
+.proofs { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-gap); margin-top: 16px; }
+@media (max-width: 640px) { .proofs { gap: 16px; } .proof { width: 100%; box-sizing: border-box; } .proofs .proof.pending { transform: translateX(-32px); } .proofs .proof:nth-child(even).pending { transform: translateX(32px); } }
+.proof { width: min(560px, 100%); box-sizing: border-box; background: var(--surface); border-radius: 18px; padding: 20px 24px; display: grid; gap: 6px; transition: opacity 800ms var(--ease), transform 900ms var(--ease); }
+.proof:nth-child(even) { justify-self: end; }
+.proof b { font-family: var(--f-sig); font-weight: 800; font-size: 26px; line-height: 1.05; }
+.proof p { font-size: 17px; }
+.proof.pending { opacity: .001; transform: translateX(-90px); }
+.proof:nth-child(even).pending { transform: translateX(90px); }
+.sign { width: 100%; aspect-ratio: 1500 / 250; max-width: 100%; display: block; margin-top: var(--s-block); }
+.contact { display: grid; grid-template-columns: repeat(3, minmax(0, 240px)); justify-content: center; gap: 16px; padding-bottom: 24px; }
+@media (max-width: 560px) { .contact { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .contact small { font-size: 11px; overflow-wrap: anywhere; text-align: center; } }
+.contact a, .contact a:hover, .contact a:visited { text-decoration: none !important; }
+.contact a { display: grid; justify-items: center; gap: 8px; text-align: center; text-decoration: none; font-size: 14px; font-weight: 700; min-width: 0; }
+.contact a span.ic { width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--jaune); color: var(--encre); transition: transform 300ms var(--ease); }
+.contact a:hover span.ic { transform: translateY(-4px) rotate(-6deg); }
+.contact svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact small { font-weight: 400; color: var(--soft); font-size: 13px; user-select: all; }
+.proto { padding-block: 16px 48px; color: var(--soft); font-size: 15px; }
+
+/* Apparitions */
+.reveal { transition: opacity 800ms var(--ease), transform 900ms var(--ease); }
+.reveal.pending { opacity: .001; transform: translateY(28px); }
+
+/* Vague de bascule, curseur et sillage */
+#wipe, #wake { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#wipe { z-index: 60; }
+#wake { z-index: 40; }
+.cursor { position: fixed; left: 0; top: 0; z-index: 70; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--jaune); box-shadow: 0 0 0 2px var(--encre); pointer-events: none; transition: width 250ms var(--ease), height 250ms var(--ease), margin 250ms var(--ease), background 250ms var(--ease); }
+.cursor.big { width: 42px; height: 42px; margin: -21px 0 0 -21px; background: color-mix(in srgb, var(--jaune) 35%, transparent); }
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
+/* ===== Version affirmée (comparatif) ===== */
+.only-pro { display: none; }
+:root.pro .only-pro { display: revert; }
+:root.pro .only-soft { display: none !important; }
+:root.pro { --surface: #F2F2EF; --field: #E3E3DE; --zw: 560; --curvefill: rgba(17,17,16,.05); }
+:root.pro[data-lecture="terrain"] { --bg: #141413; --surface: #222220; --field: #3A3A36; --soft: #ABABA3; --zw: 900; --curvefill: rgba(243,243,239,.04); }
+:root.pro body * { border-radius: 6px !important; }
+:root.pro .legend-pins i { border-radius: 50% !important; }
+:root.pro .titre { letter-spacing: -0.01em; }
+/* Accueil : un positionnement plutôt qu'un mot générique */
+:root.pro .pro-kicker { font-size: 15px; font-weight: 700; color: var(--soft); }
+:root.pro .pro-pos { font-family: var(--f-titre); font-weight: 700; font-size: clamp(38px, 5vw, 72px); line-height: .98; letter-spacing: -0.015em; max-width: 20ch; margin: 0; }
+:root.pro .pro-pos em { font-style: normal; background: var(--jaune); color: var(--encre); padding: 0 .12em; }
+:root.pro .hero h1 { font-size: clamp(24px, 2.6vw, 34px); max-width: 34em; }
+:root.pro .choice { border-width: 2px; }
+:root.pro .choice b { font-weight: 700; }
+/* Plus de surligneur : le gras porte l'accent */
+:root.pro .hl { background: none; font-weight: 700; padding: 0; }
+:root.pro .hl.hl-lead { background: var(--jaune); color: var(--encre); padding: 2px 6px; font-weight: 400; }
+/* Citations droites et plus denses */
+:root.pro .cite blockquote { font-style: normal; font-weight: 600; }
+:root.pro .cite { border-left: 6px solid var(--jaune); padding-left: 22px; }
+:root.pro .cite.big blockquote { font-weight: 900; }
+:root.pro .heard q { font-style: normal; font-weight: 600; }
+/* Fiche projet en aplat sombre */
+:root.pro .case-stage .facts { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; background: var(--fg); color: var(--bg); }
+:root.pro .case-stage .facts > div { background: none; padding: 20px 20px 22px; border-right: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); }
+:root.pro .case-stage .facts > div:last-child { border-right: 0; }
+:root.pro .case-stage .facts dt { color: var(--jaune); }
+:root[data-lecture="terrain"].pro .case-stage .facts { background: var(--surface); color: var(--fg); }
+:root[data-lecture="terrain"].pro .case-stage .facts > div { border-color: rgba(243,243,239,.12); }
+@media (max-width: 640px) { :root.pro .case-stage .facts { grid-template-columns: 1fr !important; } }
+@media (max-width: 1000px) { :root.pro .case-stage .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } :root.pro .case-stage .facts > div { border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); } }
+/* Encadrés, chiffres et étiquettes */
+:root.pro .aside { background: none; border-left: 6px solid var(--fg); padding: 4px 0 4px 22px; }
+:root.pro .kpis > div { background: none; border-top: 4px solid var(--fg); padding: 16px 0 0; }
+:root.pro .kpis b { font-weight: 800; }
+:root.pro .spec span { background: none; box-shadow: inset 0 0 0 2px var(--fg); }
+:root.pro .chip { background: var(--fg); color: var(--bg); }
+:root.pro .chapbar .inner { box-shadow: 0 0 0 2px var(--fg); }
+/* Cartes d'études : une liste nette */
+:root.pro .card { background: var(--surface); border-top: 4px solid var(--fg); }
+:root.pro .card .pill { background: none; padding: 0; color: var(--soft); }
+:root.pro .card .pill::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--jaune); margin-right: 8px; box-shadow: 0 0 0 2px var(--encre); vertical-align: 0; }
+/* Moins d'effets secondaires */
+:root.pro .pin::after { animation: none; opacity: 0; }
+:root.pro .cursor, :root.pro #wake { display: none !important; }
+:root.pro .proofs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+:root.pro .proof { width: auto; justify-self: stretch; margin: 0; background: var(--surface); padding: 26px 24px 28px; display: grid; align-content: start; gap: 10px; transition-delay: 0ms; }
+:root.pro .proof::before { content: ""; width: 14px; height: 14px; background: var(--jaune); box-shadow: 0 0 0 2px var(--encre); margin-bottom: 6px; }
+:root.pro .proof:nth-child(3n+2) { transition-delay: 120ms; }
+:root.pro .proof:nth-child(3n) { transition-delay: 240ms; }
+:root.pro .proofs .proof.pending { transform: translateY(32px); }
+:root.pro .proofs .proof:nth-child(3n+1).pending { transform: translateX(-40px); }
+:root.pro .proofs .proof:nth-child(3n).pending { transform: translateX(40px); }
+@media (max-width: 900px) { :root.pro .proofs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { :root.pro .proofs { grid-template-columns: 1fr; } :root.pro .proofs .proof.pending { transform: translateY(24px) !important; } }
+:root.pro .contact a span.ic { background: var(--fg); color: var(--bg); }
+:root.pro .since { border-left: 6px solid var(--jaune); }
+/* Bouton de comparaison */
+.cmp { position: fixed; z-index: 90; left: 50%; bottom: max(16px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); display: flex; gap: 4px; padding: 5px; background: #111110; border-radius: 999px; box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+:root.pro .cmp { border-radius: 10px !important; }
+.cmp button { appearance: none; border: 0; background: none; color: #F3F3EF; font: 700 15px var(--f-texte); padding: 10px 18px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.cmp button[aria-pressed="true"] { background: #FFF133; color: #111110; }
+@media (max-width: 420px) { .cmp button { padding: 9px 12px; font-size: 14px; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Joséphine Boutin</a>
+    <div class="toggle away" id="mini-toggle" role="group" aria-label="Choisir la lecture">
+      <span class="knob" aria-hidden="true"></span>
+      <button type="button" data-mode="strategie" aria-pressed="true">Stratégie</button>
+      <button type="button" data-mode="terrain" aria-pressed="false">Terrain</button>
+    </div>
+  </div>
+  <span class="progress" aria-hidden="true"></span>
+</header>
+
+<main id="top">
+  <section class="hero stage">
+    <div class="curve" id="curve-home" data-curve="home" role="img" aria-label="Mon parcours, de la licence STAPS à aujourd'hui"></div>
+    <div class="wrap stage-text">
+      <p class="titre who only-soft">Portfolio</p>
+      <span class="pro-kicker only-pro">Portfolio, 2026</span>
+      <p class="pro-pos only-pro">Stratégie de marque pour le sport, <em>la glisse</em> et l'outdoor.</p>
+      <h1 class="disp">Comment une marque gagne-t-elle sa place auprès de ceux qu'elle veut convaincre ?</h1>
+      <div class="duo">
+        <p class="v intro" data-v="strategie">Ce portfolio rassemble trois études de cas, issues de mes stages, de mon alternance en agence et de mes recherches. Elles partent toutes de la même question : pourquoi une marque, un produit ou un partenariat est-il accepté, ou rejeté, par ceux à qui il s'adresse ? À l'heure où les contenus se multiplient et où l'on repère vite ce qui sonne faux, la légitimité ne se décrète plus. Elle se construit, avec des preuves.</p>
+        <p class="v intro" data-v="terrain">Je surfe depuis l'âge de 13 ans, je fais du snowboard depuis six ans et j'ai joué au badminton en compétition dès 2017. En licence STAPS, j'ai étudié le sport sous tous ses angles : sociologie, histoire, physiologie, biomécanique, psychologie, économie, droit, communication. Mais mon regard de pratiquante ne me suffit pas. Dans chacune de ces études, je suis allée chercher celui des autres : les surfeurs sur un stand à Anglet, les bénévoles sur un parcours olympique, les supporters interrogés sur un maillot.</p>
+      </div>
+      <div class="chooser" role="group" aria-label="Choisir la lecture" id="chooser">
+        <button type="button" class="choice" data-mode="strategie" aria-pressed="true"><b>Stratégie</b><span>Comprendre le marché, défendre mes choix.</span></button>
+        <button type="button" class="choice" data-mode="terrain" aria-pressed="false"><b>Terrain</b><span>Rencontrer ceux qui pratiquent, affiner mes choix.</span></button>
+      </div>
+    </div>
+    <div class="stage-foot" aria-hidden="true"></div>
+  </section>
+
+  <section class="wrap projects" aria-labelledby="h-projets">
+    <h2 class="titre" id="h-projets">Études de cas</h2>
+    <div class="cards">
+      <a class="card" href="#newave">
+        <span class="ph ph-a" aria-hidden="true"></span><span class="ph-label" aria-hidden="true">Photo à fournir</span>
+        <span class="pill">Newave, 2025</span>
+        <h3 class="titre">Faire accepter une planche en trois morceaux à ceux qui la trouvent ridicule</h3>
+        <span class="meta"><span class="soon">Stage et campagne TikTok</span><span class="go">Lire <i>→</i></span></span>
+      </a>
+      <a class="card" href="#newave" aria-disabled="true" tabindex="-1">
+        <span class="ph ph-b" aria-hidden="true"></span><span class="ph-label" aria-hidden="true">Photo à fournir</span>
+        <span class="pill">Sponsoring maillot, 2026</span>
+        <h3 class="titre">Quand le maillot est trop chargé, plus aucune marque n'est vue</h3>
+        <span class="meta"><span class="soon">Étude expérimentale, 210 répondants</span><span class="soon">Bientôt</span></span>
+      </a>
+      <a class="card" href="#newave" aria-disabled="true" tabindex="-1">
+        <span class="ph ph-c" aria-hidden="true"></span><span class="ph-label" aria-hidden="true">Photo à fournir</span>
+        <span class="pill">Lacombe, 2025</span>
+        <h3 class="titre">Donner un univers à une montre qui n'avait qu'un produit</h3>
+        <span class="meta"><span class="soon">Premier conseil stratégique</span><span class="soon">Bientôt</span></span>
+      </a>
+    </div>
+  </section>
+
+  <article id="newave">
+    <div class="case-stage stage">
+      <div class="curve" id="curve-newave" data-curve="newave" role="img" aria-label="La courbe d'adoption de Rogers appliquée à Newave"></div>
+      <div class="wrap stage-text">
+        <span class="lbl">Étude de cas Newave, Les Sables-d'Olonne</span>
+        <h2 class="titre">Faire accepter une planche en trois morceaux à ceux qui la trouvent ridicule</h2>
+        <dl class="facts">
+          <div><dt>Contexte</dt><dd>Start-up vendéenne, planches de surf démontables et modulaires, système de fixation breveté.</dd></div>
+          <div><dt>Rôle</dt><dd>Stage en marketing digital et communication, puis campagne TikTok Ads menée à quatre pour la marque, en Master 2.</dd></div>
+          <div><dt>Durée</dt><dd>Stage de 6 mois en 2025, campagne de douze jours en novembre et décembre 2025.</dd></div>
+          <div class="only-pro"><dt>Méthode</dt><dd>Diffusion de l'innovation (Rogers), fossé de Moore, légitimité, observation sur le terrain.</dd></div>
+          <div class="only-pro"><dt>Livrables</dt><dd>Contenus du site, newsletters, plan de diffusion d'un film, campagne TikTok Ads.</dd></div>
+        </dl>
+      </div>
+      <div class="stage-foot" aria-hidden="true"></div>
+    </div>
+
+    <nav class="chapbar" aria-label="Chapitres de l'étude">
+      <div class="wrap"><div class="inner">
+        <canvas id="mini" aria-hidden="true"></canvas>
+        <a href="#c1" data-chap="0">Constat</a>
+        <a href="#c2" data-chap="1">Parti pris</a>
+        <a href="#c3" data-chap="2">Impact</a>
+        <a href="#c4" data-chap="3">Ce que j'en retiens</a>
+      </div></div>
+    </nav>
+
+    <section class="chap" id="c1" aria-labelledby="t-c1">
+      <div class="wrap">
+        <div class="chap-head"><h3 class="titre" id="t-c1">Constat</h3><span class="chip" data-chip>Lecture stratégie</span></div>
+        <div class="duo">
+          <div class="v" data-v="strategie">
+            <div class="cite"><blockquote>« Un produit peut être objectivement innovant et pourtant rejeté s'il n'est pas perçu comme légitime par la communauté. »</blockquote><cite>Mémoire M1, 2025</cite></div>
+            <p>Le produit répond à un vrai problème : transporter une planche de deux à trois mètres en train, en avion ou en ville. Mais pour un surfeur, une planche est un objet d'une seule pièce, façonné par un artisan. Une planche qu'on divise heurte ce que Rogers appelle <span class="hl">la compatibilité perçue</span>.</p>
+            <p>Newave avait convaincu les premiers acheteurs, ceux qui commandent sans avoir essayé. Il restait la majorité, qui veut des preuves, alors que personne ne possédait encore la planche : ni bouche-à-oreille, ni avis client, ni contenu d'utilisateur.</p>
+            <p class="aside"><b>Freins identifiés</b>La solidité, la performance, l'attachement au matériel classique et l'absence de preuve sociale.</p>
+          </div>
+          <div class="v" data-v="terrain">
+            <div class="cite big"><blockquote>« Planche de kook. »</blockquote><cite>Commentaire sous une publication de la marque, 2025. Un « kook », dans le jargon du surf, c'est celui qui ne maîtrise ni son matériel ni les règles à l'eau.</cite></div>
+            <p>Surfeuse moi-même et convaincue par le concept, je ne soupçonnais pas l'ampleur des réticences. Chaque jour, en modérant les commentaires et les messages privés, je lisais la même peur : <span class="hl">qu'elle cède dans la vague</span>.</p>
+            <p>Sur la plage, j'ai compris d'où venait ce rejet : pour un surfeur, une planche est un objet unique, façonné par un shapeur, qu'on ajoute à son quiver au fil des années. Le wingfoil ou l'efoil sont bien accueillis ; toucher à la planche elle-même, beaucoup moins.</p>
+            <div class="heard" aria-label="Phrases entendues">
+              <span class="lbl">Entendu sur le stand et en messages privés</span>
+              <q>Comment résiste-t-elle à la puissance des vagues ?</q>
+              <q>Une planche en trois morceaux, ce n'est pas une vraie planche de surf !</q>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chap alt" id="c2" aria-labelledby="t-c2">
+      <div class="wrap">
+        <div class="chap-head"><h3 class="titre" id="t-c2">Parti pris</h3><span class="chip" data-chip>Lecture stratégie</span></div>
+        <div class="duo">
+          <div class="v" data-v="strategie">
+            <div class="cite"><blockquote>« Convaincre sans renier les codes. »</blockquote><cite>Mémoire M1, 2025</cite></div>
+            <p>Pendant le Kickstarter, la marque avait tout misé sur le produit : arguments techniques, offres limitées, budget publicitaire important. Pour la sortie du film Celtic Seas'on, j'ai proposé l'inverse : <span class="hl">montrer la planche dans son contexte</span>, plus comme un produit. Avec le directeur commercial, nous avons choisi de publier des extraits du film, une option que nous n'avions pas envisagée au départ.</p>
+            <p>Six mois plus tard, sur TikTok, l'objectif changeait : faire découvrir la marque à un public britannique qui ne la connaissait pas. Trois vidéos, un budget global plutôt que quotidien, un paiement au clic. J'étais la seule de l'équipe à avoir accès à la plateforme publicitaire.</p>
+            <div class="spec" aria-label="Paramètres de la campagne"><span>Royaume-Uni</span><span>250 €</span><span>Du 24 novembre au 6 décembre 2025</span><span>Objectif trafic</span></div>
+          </div>
+          <div class="v" data-v="terrain">
+            <div class="cite"><blockquote>« Comment résiste-t-elle à la puissance des vagues ? »</blockquote><cite>Question entendue sur le stand et en messages privés, 2025</cite></div>
+            <p>À cette question, rien ne répond mieux que la planche elle-même. Aux Championnats de France universitaires de surf, à Anglet, j'ai animé le stand et aidé à organiser les essais : <span class="hl">les surfeurs démontaient la planche, la remontaient et allaient à l'eau avec</span>.</p>
+            <p>En ligne, j'ai répondu à chaque commentaire et à chaque message privé, et envoyé les newsletters depuis mon adresse professionnelle pour qu'on puisse me répondre directement.</p>
+            <div class="spec" aria-label="Sur le terrain"><span>Anglet, 22 et 23 mai 2025</span><span>Sessions d'essai</span><span>Commentaires et messages privés</span><span>Newsletters signées de mon nom</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chap" id="c3" aria-labelledby="t-c3">
+      <div class="wrap">
+        <div class="chap-head"><h3 class="titre" id="t-c3">Impact</h3><span class="chip" data-chip>Lecture stratégie</span></div>
+        <div class="duo">
+          <div class="v" data-v="strategie">
+            <div class="cite"><blockquote>« C'est en étant à la fois visible, crédible et accessible que Newave pourra franchir le cap de l'adoption massive. »</blockquote><cite>Mémoire M1, 2025</cite></div>
+            <div class="kpis" aria-label="Résultats">
+              <div><b class="count" data-to="100615" data-dec="0">100 615</b><span>impressions TikTok</span></div>
+              <div><b class="count" data-to="1315" data-dec="0">1 315</b><span>clics vers le site</span></div>
+              <div><b class="count" data-to="0.19" data-dec="2" data-suffix=" €">0,19 €</b><span>par clic</span></div>
+              <div><b>20 à 25 %</b><span>d'ouverture des newsletters</span></div>
+            </div>
+            <p class="aside"><b>Ce que ces chiffres ne disent pas</b>Les vidéos de la campagne n'ont pas été lancées au même moment, et les clics n'étaient pas reliés aux ventes du site. La campagne a mesuré la portée et l'intérêt suscité, pas l'efficacité d'un format sur un autre. Les newsletters, elles, ont été beaucoup ouvertes mais peu cliquées : elles informent, elles ne déclenchent pas l'achat d'un produit à plus de 800 €.</p>
+          </div>
+          <div class="v" data-v="terrain">
+            <div class="cite"><blockquote>« On voit ce qu'il est possible de faire avec une planche démontable, et qu'elle ne se démonte pas dans des vagues explosives. »</blockquote><cite>Mémoire M1, 2025, à propos du film Celtic Seas'on</cite></div>
+            <p>Le film des fondateurs, dont j'ai conçu l'affiche et le plan de diffusion, a été sélectionné au Festival International du Film de Surf d'Anglet, puis projeté dans quatre magasins Boardriders de la côte. Sous les publications, sceptiques et curieux se répondaient entre eux : un débat parfois vif, qui faisait exister la planche aux yeux de la communauté.</p>
+            <p class="aside"><b>Une limite</b>Les planches du film n'étaient pas celles de la série finale : elles ne portaient ni le nouveau logo ni le design noir et blanc livré aux clients. Pour un surfeur déjà méfiant, cet écart entre l'image et le produit reçu peut semer le doute.</p>
+          </div>
+        </div>
+        <div></div>
+        <div class="since reveal">
+          <h4>Et depuis</h4>
+          <p>Newave compte aujourd'hui 27 000 abonnés sur Instagram et un compte entier consacré aux contenus de sa communauté : la preuve sociale qui manquait en 2025 existe désormais. La marque continue d'innover, avec une planche qui s'assemble aussi en deux pièces et des planches en mousse modulaires. C'est l'évolution de la marque, pas mon travail, mais c'est la suite logique de ce chantier, auquel je suis fière d'avoir contribué.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="band" aria-label="Visuels du projet">
+      <div class="sticky">
+        <div class="tracks">
+          <div class="track-h v" data-v="strategie">
+            <figure class="shot"><div class="img doc doc-a"><span>Document à fournir</span></div><figcaption><b>Plan de diffusion, 2025</b>Le planning des publications autour de la sortie de Celtic Seas'on.</figcaption></figure>
+            <figure class="shot"><div class="img doc doc-b"><span>Capture à fournir</span></div><figcaption><b>Newsletter, mai 2025</b>Le message de lancement du Kickstarter, en français et en anglais.</figcaption></figure>
+            <figure class="shot"><div class="img doc doc-c"><span>Visuel à fournir</span></div><figcaption><b>Site internet, 2025</b>Les supports qui expliquent les performances techniques des planches.</figcaption></figure>
+            <figure class="shot"><div class="img doc doc-a"><span>Capture à fournir</span></div><figcaption><b>Article de blog, 2025</b>Comment transporter sa planche en train, sans discours commercial.</figcaption></figure>
+            <figure class="shot"><div class="img doc doc-b"><span>Tableau à fournir</span></div><figcaption><b>Suivi TikTok, décembre 2025</b>Le tableau de résultats de la campagne, présenté à la marque.</figcaption></figure>
+          </div>
+          <div class="track-h v" data-v="terrain">
+            <figure class="shot"><div class="img ph-d"><span>Photo à fournir</span></div><figcaption><b>Anglet, mai 2025</b>Le stand aux Championnats de France universitaires de surf, sessions d'essai.</figcaption></figure>
+            <figure class="shot"><div class="img ph-a"><span>Photo à fournir</span></div><figcaption><b>Écosse, octobre 2024</b>Le tournage de Celtic Seas'on par les fondateurs.</figcaption></figure>
+            <figure class="shot"><div class="img ph-e"><span>Visuel à fournir</span></div><figcaption><b>Affiche, 2025</b>L'affiche du film, que j'ai conçue.</figcaption></figure>
+            <figure class="shot"><div class="img ph-b"><span>Capture à fournir</span></div><figcaption><b>Instagram, 2025</b>Un fil de commentaires, sceptiques et curieux mêlés.</figcaption></figure>
+            <figure class="shot"><div class="img ph-c"><span>Photo à fournir</span></div><figcaption><b>Les Sables-d'Olonne, 2025</b>L'arrivée de la première série de planches produites.</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yellow" id="c4" aria-labelledby="t-c4">
+      <div class="wrap reveal">
+        <h3 class="titre retiens" id="t-c4">Ce que j'en retiens</h3>
+        <p class="lesson">Ce n'est pas parce qu'un produit est ingénieux qu'il sera adopté. Il doit être perçu comme légitime par ceux à qui il s'adresse.</p>
+        <cite>Conclusion, mémoire M1</cite>
+      </div>
+    </section>
+
+  </article>
+
+  <footer class="wrap end" aria-labelledby="t-end">
+    <h2 class="titre" id="t-end">Et si votre marque était mon prochain terrain ?</h2>
+    <p class="lead"><span class="hl hl-lead">Je cherche un premier poste en marketing ou en stratégie de marque dans le sport, la glisse ou l'outdoor.</span> La légitimité est le fil de ce portfolio, pas la limite de ce que je sais faire.</p>
+    <div class="proofs">
+      <div class="proof"><b>Stratégie de marque</b><p>Consultante en alternance chez Off The Hook, agence de branding : audits, positionnements, plateformes de marque, tons de marque et lignes éditoriales pour des clients de secteurs très variés.</p></div>
+      <div class="proof"><b>Rédaction</b><p>Un livre blanc de 56 pages pour un client, rédigé intégralement, et des articles de blog pour l'agence comme pour ses clients.</p></div>
+      <div class="proof"><b>IA générative</b><p>60 images générées pour 16 produits d'une marque tech britannique.</p></div>
+      <div class="proof"><b>Photo &amp; vidéo</b><p>Je photographie et je filme à l'appareil (Sony a6400) comme au smartphone, en caméra embarquée ou au drone, puis je monte mes vidéos moi-même.</p></div>
+      <div class="proof"><b>Anglais</b><p>Des interviews en anglais au bord du terrain pendant le WURIT.</p></div>
+      <div class="proof"><b>Encadrer</b><p>Une quinzaine de bénévoles au Relais de la Flamme, des groupes de 12 à 60 enfants en colonie depuis 2021.</p></div>
+    </div>
+    <canvas class="sign" id="sign" aria-label="Ma signature : une ligne qui devient vague, puis mes initiales"></canvas>
+    <div class="contact">
+      <a href="mailto:josephine.boutin@hotmail.com" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5 12 13l8.5-6.5"></path></svg></span>Mail<small>josephine.boutin@hotmail.com</small></a>
+      <a href="tel:+33695342820" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span>Téléphone<small>06 95 34 28 20</small></a>
+      <a href="https://www.linkedin.com/in/josephineboutin/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span>LinkedIn<small>josephineboutin</small></a>
+    </div>
+  </footer>
+  <p class="wrap proto">Site en construction : les visuels et les études sur le sponsoring maillot et Lacombe arrivent bientôt.</p>
+</main>
+<canvas id="wake" aria-hidden="true"></canvas>
+<canvas id="wipe" aria-hidden="true"></canvas>
+<div class="cursor" aria-hidden="true"></div>
+<script>document.documentElement.classList.add("pro");</script>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var listeners = [], mode = "strategie";
+  function css(n) { return getComputedStyle(root).getPropertyValue(n).trim(); }
+
+  /* ---------- Bascule ---------- */
+  var chips = document.querySelectorAll("[data-chip]");
+  function applyMode(m) {
+    mode = m;
+    if (m === "terrain") root.setAttribute("data-lecture", "terrain"); else root.removeAttribute("data-lecture");
+    document.querySelectorAll("[data-mode]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.mode === m)); });
+    chips.forEach(function (c) { c.textContent = m === "terrain" ? "Lecture terrain" : "Lecture stratégie"; });
+    document.querySelectorAll(".duo > .v, .tracks > .v").forEach(function (v) { v.setAttribute("aria-hidden", String(v.dataset.v !== m)); });
+    listeners.forEach(function (f) { f(m); });
+    try { localStorage.setItem("lecture", m); } catch (e) {}
+  }
+  /* La vague de bascule : une bande de la couleur de l'autre lecture balaie l'écran */
+  var wipe = document.getElementById("wipe"), wctx = wipe.getContext("2d"), wiping = false;
+  function setMode(m) {
+    if (m === mode || wiping) return;
+    if (reduce) { applyMode(m); return; }
+    wiping = true;
+    var dpr = Math.min(2, window.devicePixelRatio || 1), W = window.innerWidth, H = window.innerHeight;
+    wipe.width = W * dpr; wipe.height = H * dpr; wctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var target = m === "terrain" ? (root.classList.contains("pro") ? "#141413" : "#0C1E24") : "#FFFFFF", line = m === "terrain" ? "#FFF133" : "#111110";
+    var t0 = null, dur = 1250, switched = false;
+    function edge(base, y, p, s) { return base + 34 * Math.sin(y * 0.011 + p * 9 + s) + 14 * Math.sin(y * 0.031 - p * 5); }
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      var lead = -0.15 * W + e * 2.6 * W, trail = lead - 1.35 * W;
+      wctx.clearRect(0, 0, W, H);
+      wctx.fillStyle = target;
+      wctx.beginPath();
+      for (var y = 0; y <= H; y += 12) { var xl = edge(lead, y, p, 0); if (y === 0) wctx.moveTo(xl, y); else wctx.lineTo(xl, y); }
+      for (var y2 = H; y2 >= 0; y2 -= 12) wctx.lineTo(edge(trail, y2, p, 2), y2);
+      wctx.closePath(); wctx.fill();
+      wctx.strokeStyle = line; wctx.lineWidth = 4; wctx.lineCap = "round";
+      [[lead, 0], [trail, 2]].forEach(function (s) { wctx.beginPath(); for (var y = 0; y <= H; y += 12) { var xx = edge(s[0], y, p, s[1]); if (y === 0) wctx.moveTo(xx, y); else wctx.lineTo(xx, y); } wctx.stroke(); });
+      if (!switched && trail < -40 && lead > W + 40) {
+        switched = true; root.classList.add("instant"); applyMode(m);
+        requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.remove("instant"); }); });
+      }
+      if (p < 1) requestAnimationFrame(frame); else { wctx.clearRect(0, 0, W, H); if (!switched) applyMode(m); wiping = false; }
+    }
+    requestAnimationFrame(frame);
+  }
+  document.querySelectorAll("[data-mode]").forEach(function (b) { b.addEventListener("click", function () { setMode(b.dataset.mode); }); });
+  /* Le petit interrupteur n'apparaît dans la barre qu'une fois le grand choix dépassé */
+  var miniT = document.getElementById("mini-toggle"), chooser = document.getElementById("chooser");
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { miniT.classList.toggle("away", en[0].isIntersecting); }, { rootMargin: "-70px 0px 0px 0px" }).observe(chooser);
+  else miniT.classList.remove("away");
+  document.querySelectorAll('.card[aria-disabled="true"]').forEach(function (c) { c.addEventListener("click", function (e) { e.preventDefault(); }); });
+
+  /* ---------- Courbes ---------- */
+  function profile(pts) {
+    return function (u) {
+      for (var i = 1; i < pts.length; i++) if (u <= pts[i][0]) { var a = pts[i - 1], b = pts[i], k = (u - a[0]) / (b[0] - a[0]); return a[1] + (b[1] - a[1]) * (1 - Math.cos(Math.PI * k)) / 2; }
+      return pts[pts.length - 1][1];
+    };
+  }
+  var SIG = 0.17;
+  function bell(u) { return 0.06 + 0.84 * Math.exp(-Math.pow(u - 0.5, 2) / (2 * SIG * SIG)); }
+  function travelingWave(u, t) {
+    var c = ((t * 0.05) % 1.5) - 0.25, w = 0.2, d = (u - c) / w, b = 0;
+    if (d > -1 && d <= 0) b = (1 + Math.cos(Math.PI * d)) / 2;
+    else if (d > 0 && d < 0.55) b = (1 + Math.cos(Math.PI * d / 0.55)) / 2;
+    return { v: 0.14 + 0.62 * b + 0.03 * Math.sin(u * 14 + t * 1.8), crest: c };
+  }
+  var CURVES = {
+    home: {
+      strat: profile([[0, .06], [.04, .12], [.09, .14], [.17, .24], [.22, .26], [.28, .34], [.32, .36], [.37, .42], [.42, .44], [.47, .52], [.52, .54], [.58, .62], [.63, .64], [.68, .7], [.73, .72], [.79, .8], [.86, .82], [.95, .92], [1, .94]]),
+      terr: function (u, t) { return travelingWave(u, t).v; },
+      surfer: "home",
+      fill: true,
+      ticks: [[0.04, "2021"], [0.17, "2023"], [0.33, "2024"], [0.58, "2025"], [0.79, "2026"]],
+      legend: true,
+      title: "Mon parcours en bref",
+      pins: [
+        { u: 0.04, type: "formation", when: "2021 - 2024", title: "Licence STAPS", text: "Mention management du sport. D'abord le sport compris par le corps, la société et la pratique (physiologie, sociologie, sports collectifs, individuels et de pleine nature), puis le sport vu comme un secteur : marketing du sport, droit, gestion, organisation d'événements et stages en structure." },
+        { u: 0.17, type: "exp", when: "Septembre 2023", title: "WURIT", text: "World University Rugby Invitational Tournament. Journaliste bénévole : interviews de joueurs et d'entraîneurs, en français et en anglais, au bord du terrain." },
+        { u: 0.28, type: "exp", when: "Printemps 2024", title: "Homie Boards", text: "Stage de 2 mois en Licence 3. Louer des planches, conseiller, négocier : la glisse côté commerce, à Biarritz." },
+        { u: 0.37, type: "exp", when: "Mai 2024", title: "Relais de la Flamme", text: "Mission bénévole : encadrer une quinzaine de bénévoles sur le parcours olympique à Bordeaux." },
+        { u: 0.47, type: "formation", when: "2024 - 2025", title: "Master 1", text: "Marketing stratégique et communication, IAE Bordeaux : stratégie marketing, études de marché, communication et persuasion, marketing digital, droit de la consommation, RSE, analyse de données, datavisualisation et PAO." },
+        { u: 0.58, type: "exp", when: "2025", title: "Newave", text: "Stage de 6 mois en marketing digital et communication : site WordPress, newsletters, réseaux sociaux, plan de diffusion du film de la marque, stand aux championnats universitaires et refonte de l'identité vers un positionnement premium." },
+        { u: 0.68, type: "formation", when: "2025 - 2026", title: "Master 2", text: "Marketing stratégique, IAE Bordeaux : décisions stratégiques, distribution, e-commerce et analyse de panels, avec un mémoire de recherche sur le sponsoring maillot." },
+        { u: 0.79, type: "exp", when: "2025 - 2026", title: "Off The Hook", text: "Consultante en stratégie de marque, en alternance dans une agence de branding bordelaise. Pour des clients de secteurs très variés : audits, positionnements, plateformes de marque, tons de marque, lignes éditoriales et un livre blanc de 56 pages. Pour l'agence : contenus, calendriers éditoriaux et veille. Et des articles de blog pour l'agence comme pour ses clients." },
+        { u: 0.95, type: "suite", when: "2026", title: "Aujourd'hui", text: "À la recherche d'un premier poste en stratégie de marque, marketing ou communication dans le sport, la glisse et l'outdoor." }
+      ]
+    },
+    newave: {
+      strat: bell,
+      terrPath: "M0,200 C200,196 330,186 430,152 C520,120 566,62 642,52 C722,42 768,96 742,128 C724,150 692,144 694,122 C696,106 716,108 720,122 C738,168 806,198 905,204 C1100,212 1300,201 1500,198",
+      surfer: "newave",
+      fill: true,
+      bands: [[0, 0.16, "Innovateurs, 2,5 %"], [0.16, 0.33, "Premiers adeptes, 13,5 %"], [0.33, 0.5, "Majorité précoce, 34 %"], [0.5, 0.67, "Majorité tardive, 34 %"], [0.67, 1, "Retardataires, 16 %"]],
+      gap: [0.318, 0.342],
+      axisY: "Nombre de surfeurs qui adoptent la planche",
+      axisX: "Le temps",
+      pins: [
+        { u: 0.08, type: "exp", when: "Avant le lancement", title: "Les innovateurs", text: "Les premiers surfeurs commandent la planche sans l'avoir essayée, et attendent des mois leur livraison." },
+        { u: 0.22, type: "exp", when: "Mai et juin 2025", title: "Le Kickstarter", text: "Plus de 230 000 dollars levés en un mois. Les premiers adeptes suivent, séduits par la promesse." },
+        { u: 0.3, type: "exp", below: true, when: "Mon stage, 2025", title: "Le fossé", text: "Entre les premiers adeptes et la majorité, il faut des preuves. C'est là que se jouait mon travail." },
+        { u: 0.365, type: "exp", below: true, when: "Décembre 2025", title: "TikTok", text: "Faire découvrir l'innovation à un public britannique qui ne connaît pas encore la marque." },
+        { u: 0.42, type: "suite", when: "2026", title: "Aujourd'hui", text: "27 000 abonnés sur Instagram et un compte consacré aux contenus de la communauté : la preuve sociale arrive. Position indicative, c'est l'évolution de la marque." }
+      ]
+    }
+  };
+
+  /* La glisse en Terrain : une planche effilée et son sillage, sans personnage */
+  function boardPath(ctx, L, Wd) {
+    ctx.beginPath();
+    ctx.moveTo(L / 2, 0);
+    ctx.bezierCurveTo(L * 0.3, -Wd * 0.62, -L * 0.3, -Wd * 0.62, -L / 2, -Wd * 0.18);
+    ctx.lineTo(-L / 2, Wd * 0.18);
+    ctx.bezierCurveTo(-L * 0.3, Wd * 0.62, L * 0.3, Wd * 0.62, L / 2, 0);
+    ctx.closePath();
+  }
+  function drawRider(ctx, trail, rs, alpha, pieces, gap) {
+    if (alpha <= 0.01) return;
+    ctx.save(); ctx.lineCap = "round";
+    /* Sillage : la trajectoire réelle de la planche, qui s'efface */
+    for (var i = 1; i < trail.length; i++) {
+      var a = trail[i - 1], b = trail[i], k = i / trail.length;
+      ctx.globalAlpha = alpha * k * k * 0.85;
+      ctx.strokeStyle = "#F3F3EF"; ctx.lineWidth = 0.6 + k * 3.2;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y - 3); ctx.lineTo(b.x, b.y - 3); ctx.stroke();
+    }
+    ctx.translate(rs.x, rs.y); ctx.rotate(rs.a);
+    var L = 40, Wd = 8;
+    ctx.globalAlpha = alpha; ctx.fillStyle = "#FFF133"; ctx.strokeStyle = "#0C1E24"; ctx.lineWidth = 1.5;
+    if (pieces === 3 && gap > 0.2) {
+      var cuts = [-L / 2 - 1, -L / 6, L / 6, L / 2 + 1];
+      for (var p = 0; p < 3; p++) {
+        var off = (p - 1) * gap;
+        ctx.save(); ctx.translate(off, 0);
+        ctx.beginPath(); ctx.rect(cuts[p] - off * 0, -Wd, cuts[p + 1] - cuts[p], Wd * 2); ctx.clip();
+        boardPath(ctx, L, Wd); ctx.fill(); ctx.stroke();
+        ctx.restore();
+      }
+    } else { boardPath(ctx, L, Wd); ctx.fill(); ctx.stroke(); }
+    ctx.restore();
+  }
+  function Curve(host) {
+    var cfg = CURVES[host.dataset.curve];
+    var cv = document.createElement("canvas"); cv.setAttribute("aria-hidden", "true"); host.appendChild(cv);
+    var ctx = cv.getContext("2d");
+    var mix = mode === "terrain" ? 1 : 0, target = mix, time = 0, running = false, visible = true;
+    var prog = reduce ? 1 : 0, drawn = reduce, ride = 0, asm = 0;
+    var W = 0, H = 0, pad = { t: 0, b: 0 }, N = 240, TP = null, crestIdx = 0, rider = null, wakeT = [];
+    var pinEls = [], tip = null, openPin = null, tickEls = [], axisEls = [], legendEl = null, titleEl = null;
+    if (cfg.terrPath) {
+      var NSs = "http://www.w3.org/2000/svg", sv = document.createElementNS(NSs, "svg");
+      sv.setAttribute("width", "0"); sv.setAttribute("height", "0"); sv.style.position = "absolute"; sv.style.visibility = "hidden";
+      var pp = document.createElementNS(NSs, "path"); pp.setAttribute("d", cfg.terrPath); sv.appendChild(pp); document.body.appendChild(sv);
+      var L = pp.getTotalLength(), raw = [], maxY = -1e9, minY = 1e9;
+      for (var q = 0; q <= N; q++) { var gp = pp.getPointAtLength(L * q / N); raw.push(gp); maxY = Math.max(maxY, gp.y); if (gp.y < minY) { minY = gp.y; crestIdx = q; } }
+      TP = raw.map(function (g) { return { u: g.x / 1500, h: (maxY - g.y) / 1500 }; });
+      sv.remove();
+    }
+    function shift() { return TP ? 0.16 * Math.sin(time * 0.22) + 0.04 * Math.sin(time * 0.61) : 0; }
+    function pt(i, m) {
+      var u = i / N, s = cfg.strat(u);
+      if (TP) {
+        var plotH = Math.max(1, H - pad.t - pad.b), tv = Math.min(0.96, 0.06 + TP[i].h * 1.7 * (W - 2 * M) / plotH);
+        var tu = TP[i].u + shift();
+        return { u: u + (tu - u) * m, v: s + (tv - s) * m };
+      }
+      var r = cfg.terr(u, time); return { u: u, v: s + (r - s) * m };
+    }
+    function Y(v) { return pad.t + (H - pad.t - pad.b) * (1 - v); }
+    var M = 16;
+    function x(u) { return M + (W - 2 * M) * u; }
+    function size() {
+      var r = host.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = r.width; H = r.height;
+      var wr = host.parentElement.querySelector(".wrap");
+      if (wr) { var cs = getComputedStyle(wr); M = Math.max(16, wr.getBoundingClientRect().left - r.left + parseFloat(cs.paddingLeft)); }
+      var foot = host.parentElement.querySelector(".stage-foot");
+      var footH = foot ? foot.offsetHeight : H * 0.5;
+      pad.b = (W < 640 ? 54 : 62) + (cfg.legend ? 34 : 0);
+      pad.t = Math.max(H * 0.25, H - footH + (cfg.title ? 124 : 30));
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      placeHtml(); draw();
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      var ink = css("--ink"), sA = 1 - mix;
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
+      if (cfg.bands && sA > 0.01) {
+        cfg.bands.forEach(function (b, i) { ctx.globalAlpha = sA * (i % 2 ? 0.7 : 0.3); ctx.fillStyle = css("--surface"); ctx.fillRect(x(b[0]), Y(1) - 10, x(b[1]) - x(b[0]), Y(0) - Y(1) + 10 + 40); });
+        if (cfg.gap) { ctx.globalAlpha = sA; ctx.fillStyle = "#FFF133"; ctx.fillRect(x(cfg.gap[0]), Y(1) - 10, x(cfg.gap[1]) - x(cfg.gap[0]), Y(0) - Y(1) + 10 + 40); }
+        ctx.globalAlpha = 1;
+      }
+      /* Champ de lignes */
+      var n = 9, top = Math.max(0, pad.t - 10), bot = H - 12;
+      ctx.strokeStyle = css("--field"); ctx.lineWidth = 1.2;
+      for (var f = 0; f < n; f++) {
+        var y0 = top + (bot - top) * (f / (n - 1));
+        ctx.beginPath();
+        for (var xx = 0; xx <= W; xx += 8) {
+          var uu = xx / W, amp = mix * (6 + f * 1.7);
+          var scan = sA * 2.4 * Math.exp(-Math.pow((uu - ((time * 0.06 + f * 0.02) % 1.4 - 0.2)) * 9, 2));
+          var yy = y0 + amp * Math.sin(uu * 9 + f * 0.7 + time * (0.6 + f * 0.03)) + mix * 4 * Math.sin(uu * 23 - time * 1.3 + f) - scan * Math.sin(uu * 60);
+          if (xx === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+        }
+        ctx.stroke();
+      }
+      var reach = Math.min(1, prog + (1 - prog) * mix), last = Math.max(1, Math.round(N * reach));
+      /* Remplissage en Stratégie */
+      if (sA > 0.01 && cfg.fill) {
+        ctx.globalAlpha = sA * 0.85; ctx.fillStyle = css("--curvefill") || "#FFF7B0";
+        ctx.beginPath(); ctx.moveTo(0, Y(0) + 20); ctx.lineTo(0, Y(pt(0, mix).v));
+        for (var a = 0; a <= last; a++) { var A = pt(a, mix); ctx.lineTo(x(A.u), Y(A.v)); }
+        if (last >= N) { ctx.lineTo(W, Y(pt(N, mix).v)); ctx.lineTo(W, Y(0) + 20); } else ctx.lineTo(x(pt(last, mix).u), Y(0) + 20);
+        ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+      }
+      /* Ligne principale */
+      ctx.strokeStyle = ink; ctx.lineWidth = W < 600 ? 3.5 : 4.5;
+      ctx.beginPath(); var pen = false, prevU = -9;
+      for (var i = 0; i <= last; i++) {
+        var u = i / N, P = pt(i, mix);
+        if (cfg.gap && mix < 0.5 && u > cfg.gap[0] && u < cfg.gap[1]) { pen = false; continue; }
+        if (!pen) { ctx.moveTo(x(P.u), Y(P.v)); pen = true; } else ctx.lineTo(x(P.u), Y(P.v));
+        prevU = P.u;
+      }
+      ctx.stroke();
+      /* La mer continue de part et d'autre de la vague Newave en Terrain */
+      {
+        ctx.globalAlpha = 1;
+        var first = pt(0, mix), lst = pt(N, mix);
+        ctx.beginPath(); ctx.moveTo(0, Y(first.v)); ctx.lineTo(x(first.u), Y(first.v));
+        if (last >= N) { ctx.moveTo(x(lst.u), Y(lst.v)); ctx.lineTo(W, Y(lst.v)); }
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+      /* En Stratégie, un point parcourt la courbe ; en Terrain, une surfeuse la surfe */
+      if (sA > 0.02 && drawn) {
+        var ru = ride % 1, ri = Math.round(ru * N);
+        if (!(cfg.gap && ru > cfg.gap[0] && ru < cfg.gap[1])) {
+          var R = pt(ri, mix);
+          ctx.globalAlpha = sA * 0.4; ctx.fillStyle = "#FFF133"; ctx.beginPath(); ctx.arc(x(R.u), Y(R.v), 16, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = sA; ctx.fillStyle = "#111110"; ctx.beginPath(); ctx.arc(x(R.u), Y(R.v), 6, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      }
+      if (mix > 0.6) {
+        var ra = (mix - 0.6) / 0.4, target = null;
+        if (TP) {
+          /* Newave : la planche monte et descend la face de la vague, sous la lèvre */
+          var swing = 0.5 - 0.5 * Math.cos(time * 0.7), ii = Math.round(crestIdx - 46 + 34 * swing);
+          ii = Math.max(2, Math.min(N - 3, ii));
+          var A1 = pt(ii, 1), A2 = pt(ii + 2, 1);
+          target = { x: x(A1.u), y: Y(A1.v) - 4, a: Math.atan2(Y(A2.v) - Y(A1.v), x(A2.u) - x(A1.u)) };
+        } else {
+          /* Accueil : la planche suit la face avant de la houle qui avance */
+          var cr = travelingWave(0, time).crest, su = cr + 0.035;
+          ra *= Math.max(0, Math.min(1, (su - 0.02) / 0.08, (0.97 - su) / 0.08));
+          if (su > 0 && su < 1) {
+            var bi = Math.max(1, Math.min(N - 3, Math.round(su * N))), B1 = pt(bi, 1), B2 = pt(bi + 2, 1);
+            target = { x: x(B1.u), y: Y(B1.v) - 4, a: Math.atan2(Y(B2.v) - Y(B1.v), x(B2.u) - x(B1.u)) };
+          }
+        }
+        if (target) {
+          if (!rider || Math.hypot(target.x - rider.x, target.y - rider.y) > 120) { rider = { x: target.x, y: target.y, a: target.a }; wakeT = []; }
+          rider.x += (target.x - rider.x) * 0.3; rider.y += (target.y - rider.y) * 0.3;
+          var da = Math.atan2(Math.sin(target.a - rider.a), Math.cos(target.a - rider.a)); rider.a += da * 0.15;
+          wakeT.push({ x: rider.x, y: rider.y }); if (wakeT.length > 40) wakeT.shift();
+          drawRider(ctx, wakeT, rider, ra, cfg.surfer === "newave" ? 3 : 1, 6 * (1 - asm));
+        } else { rider = null; wakeT = []; }
+      } else { rider = null; wakeT = []; }
+      pinEls.forEach(function (el, k) { el.classList.toggle("on", cfg.pins[k].u <= reach + 0.001); });
+    }
+    function placeHtml() {
+      cfg.pins.forEach(function (p, i) { var el = pinEls[i]; if (el) { el.style.left = x(p.u) + "px"; el.style.top = Y(cfg.strat(p.u)) + "px"; } });
+      tickEls.forEach(function (el) { el.style.left = x(+el.dataset.u) + "px"; el.style.top = (Y(0) + 26) + "px"; });
+      if (axisEls[0]) { axisEls[0].style.right = M + "px"; axisEls[0].style.top = (Y(1) - 34) + "px"; }
+      if (axisEls[1]) { axisEls[1].style.right = M + "px"; axisEls[1].style.top = (Y(0) + 26) + "px"; }
+      if (legendEl) { legendEl.style.top = (Y(0) + 54) + "px"; legendEl.style.left = M + "px"; }
+      if (titleEl) { titleEl.style.top = (pad.t - 72) + "px"; titleEl.style.left = M + "px"; }
+      if (openPin !== null) placeTip(openPin);
+    }
+    function placeTip(i) {
+      var p = cfg.pins[i], px = x(p.u), py = Y(cfg.strat(p.u)), tw = tip.offsetWidth, th = tip.offsetHeight;
+      tip.style.left = Math.min(Math.max(8, px - tw / 2), W - tw - 8) + "px";
+      var top = py - th - 24; tip.style.top = (top < 0 ? py + 24 : top) + "px";
+    }
+    function closeTip() { if (tip) { tip.remove(); tip = null; } if (openPin !== null) pinEls[openPin].setAttribute("aria-expanded", "false"); openPin = null; }
+    function openTip(i) {
+      if (openPin === i) return; closeTip();
+      var p = cfg.pins[i];
+      tip = document.createElement("div"); tip.className = "tip"; tip.setAttribute("role", "status");
+      tip.innerHTML = '<span class="when"></span><strong></strong><span class="txt"></span>';
+      tip.querySelector(".when").textContent = p.when; tip.querySelector("strong").textContent = p.title; tip.querySelector(".txt").textContent = p.text;
+      host.appendChild(tip); openPin = i; pinEls[i].setAttribute("aria-expanded", "true"); placeTip(i);
+    }
+    cfg.pins.forEach(function (p, i) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "pin " + p.type + (p.below ? " below" : "");
+      b.setAttribute("aria-label", p.title + ", " + p.when); b.setAttribute("aria-expanded", "false");
+      var lab = document.createElement("span"); lab.className = "pin-label"; lab.textContent = p.title; lab.setAttribute("aria-hidden", "true"); b.appendChild(lab);
+      b.addEventListener("mouseenter", function () { openTip(i); });
+      b.addEventListener("mouseleave", function () { if (openPin === i) closeTip(); });
+      b.addEventListener("focus", function () { openTip(i); });
+      b.addEventListener("click", function (e) { e.stopPropagation(); if (openPin === i) closeTip(); else openTip(i); });
+      host.appendChild(b); pinEls.push(b);
+    });
+    (cfg.ticks || (cfg.bands || []).map(function (b) { return [(b[0] + b[1]) / 2, b[2]]; })).forEach(function (t) {
+      var el = document.createElement("span"); el.className = "tick"; el.dataset.u = t[0]; el.textContent = t[1]; el.setAttribute("aria-hidden", "true"); host.appendChild(el); tickEls.push(el);
+    });
+    [cfg.axisY, cfg.axisX].forEach(function (t, k) {
+      if (!t) return;
+      var el = document.createElement("span"); el.className = "axis"; el.textContent = k ? t + " →" : "↑ " + t; el.setAttribute("aria-hidden", "true"); host.appendChild(el); axisEls[k] = el;
+    });
+    if (cfg.title) {
+      titleEl = document.createElement("h2"); titleEl.className = "titre curve-title"; titleEl.textContent = cfg.title; host.appendChild(titleEl);
+    }
+    if (cfg.legend) {
+      legendEl = document.createElement("div"); legendEl.className = "legend-pins"; legendEl.setAttribute("aria-hidden", "true");
+      legendEl.innerHTML = '<span><i style="background:#16323A"></i>Formation</span><span><i style="background:#FFF133"></i>Expérience</span><span><i style="background:#FFFFFF"></i>Aujourd\'hui</span>';
+      host.appendChild(legendEl);
+    }
+    host.addEventListener("mouseleave", closeTip);
+    document.addEventListener("click", function (e) { if (!host.contains(e.target)) closeTip(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeTip(); });
+
+    var lastTs = null;
+    function loop(ts) {
+      var dt = lastTs === null ? 16 : Math.min(50, ts - lastTs); lastTs = ts;
+      mix += (target - mix) * 0.07; if (Math.abs(target - mix) < 0.002) mix = target;
+      time += dt / 1000;
+      if (!drawn) { prog = Math.min(1, prog + dt / 1800); if (prog >= 1) drawn = true; } else ride += dt / 9000;
+      if (mix > 0.95) asm = Math.min(1, asm + dt / 1400); else if (mix < 0.5) asm = 0;
+      draw();
+      if (visible && !document.hidden) requestAnimationFrame(loop); else { running = false; lastTs = null; }
+    }
+    function kick() { if (reduce) { mix = target; prog = 1; drawn = true; asm = 1; draw(); return; } if (!running) { running = true; requestAnimationFrame(loop); } }
+    listeners.push(function (m) { target = m === "terrain" ? 1 : 0; if (m === "terrain") closeTip(); if (root.classList.contains("instant")) mix = target; kick(); });
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) kick(); });
+    new ResizeObserver(size).observe(host);
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) kick(); }, { threshold: 0.1 }).observe(host);
+    size();
+  }
+  document.querySelectorAll(".curve").forEach(function (h) { Curve(h); });
+
+  /* ---------- Barre de chapitres et mini-courbe qui suit le récit ---------- */
+  var chapLinks = document.querySelectorAll(".chapbar a"), chapIds = ["c1", "c2", "c3", "c4"], chapU = [0.08, 0.3, 0.365, 0.42, 0.46];
+  var mini = document.getElementById("mini"), mctx = mini.getContext("2d"), miniU = 0.08;
+  function drawMini(u) {
+    var dpr = Math.min(2, window.devicePixelRatio || 1), w = 120, h = 40;
+    if (mini.width !== w * dpr) { mini.width = w * dpr; mini.height = h * dpr; }
+    mctx.setTransform(dpr, 0, 0, dpr, 0, 0); mctx.clearRect(0, 0, w, h);
+    var ink = css("--ink"); mctx.lineCap = "round";
+    function my(uu) { return h - 4 - (h - 10) * (mode === "terrain" ? (0.15 + 0.7 * Math.pow(Math.max(0, Math.sin(Math.PI * Math.min(1, uu * 1.15))), 2.2)) : (bell(uu) - 0.06) / 0.84); }
+    mctx.strokeStyle = ink; mctx.lineWidth = 2.5; mctx.beginPath();
+    for (var i = 0; i <= 60; i++) { var uu = i / 60; if (i === 0) mctx.moveTo(uu * w, my(uu)); else mctx.lineTo(uu * w, my(uu)); }
+    mctx.stroke();
+    mctx.fillStyle = "#FFF133"; mctx.strokeStyle = "#111110"; mctx.lineWidth = 2;
+    mctx.beginPath(); mctx.arc(u * w, my(u), 5, 0, Math.PI * 2); mctx.fill(); mctx.stroke();
+  }
+  function updateChapters() {
+    var vh = window.innerHeight, active = -1, frac = 0;
+    chapIds.forEach(function (id, i) { var r = document.getElementById(id).getBoundingClientRect(); if (r.top < vh * 0.5) { active = i; frac = Math.min(1, Math.max(0, (vh * 0.5 - r.top) / Math.max(1, r.height))); } });
+    chapLinks.forEach(function (a, i) { a.classList.toggle("on", i === active); });
+    var tu = active < 0 ? chapU[0] : chapU[active] + (chapU[active + 1] - chapU[active]) * frac;
+    miniU += (tu - miniU) * 0.25; drawMini(miniU);
+  }
+  listeners.push(function () { drawMini(miniU); });
+
+  /* ---------- Apparitions, compteurs, preuves ---------- */
+  function fmt(n, dec, suffix) { var s = n.toFixed(dec).replace(".", ","), p = s.split(","); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join(",") + (suffix || ""); }
+  var vh = window.innerHeight;
+  function below(el) { return el.getBoundingClientRect().top > vh * 0.92; }
+  if (!reduce && "IntersectionObserver" in window) {
+    var pendingCounts = [];
+    document.querySelectorAll(".reveal, .proof").forEach(function (el) { if (below(el)) el.classList.add("pending"); });
+    document.querySelectorAll(".count").forEach(function (el) { if (below(el)) { pendingCounts.push(el); el.textContent = fmt(0, +el.dataset.dec, el.dataset.suffix); } });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target; el.classList.remove("pending");
+        if (pendingCounts.indexOf(el) > -1) countUp(el);
+        io.unobserve(el);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.15 });
+    document.querySelectorAll(".reveal, .proof").forEach(function (el) { io.observe(el); });
+    pendingCounts.forEach(function (el) { io.observe(el); });
+  }
+  function countUp(el) { var to = +el.dataset.to, dec = +el.dataset.dec, suf = el.dataset.suffix, t0 = null; function step(ts) { if (!t0) t0 = ts; var p = Math.min(1, (ts - t0) / 1400), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(to * e, dec, suf); if (p < 1) requestAnimationFrame(step); } requestAnimationFrame(step); }
+
+  /* ---------- Progression et bande horizontale ---------- */
+  var prog = document.querySelector(".progress"), band = document.getElementById("band"), tracks = band.querySelectorAll(".track-h"), overflow = 0;
+  function layoutBand() {
+    vh = window.innerHeight;
+    if (reduce) { band.classList.add("static"); band.style.height = ""; return; }
+    band.classList.remove("static");
+    overflow = 0; tracks.forEach(function (t) { overflow = Math.max(overflow, t.scrollWidth - window.innerWidth); });
+    if (overflow < 40) { band.classList.add("static"); band.style.height = ""; return; }
+    band.style.height = (vh + overflow) + "px";
+  }
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - vh;
+    prog.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+    if (!band.classList.contains("static")) {
+      var r = band.getBoundingClientRect(), p = Math.min(1, Math.max(0, -r.top / overflow));
+      tracks.forEach(function (t) { t.style.transform = "translate3d(" + (-p * overflow) + "px,0,0)"; });
+    }
+    updateChapters();
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", function () { layoutBand(); onScroll(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layoutBand(); onScroll(); });
+  layoutBand(); onScroll();
+
+  /* ---------- Curseur et sillage ---------- */
+  if (finePointer && !reduce) {
+    var cur = document.querySelector(".cursor"), wake = document.getElementById("wake"), kctx = wake.getContext("2d");
+    var mx = -100, my = -100, cx = -100, cy = -100, trail = [];
+    window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; var t = e.target.closest && e.target.closest("a, button, .pin"); cur.classList.toggle("big", !!t); }, { passive: true });
+    function sizeWake() { var dpr = Math.min(2, window.devicePixelRatio || 1); wake.width = window.innerWidth * dpr; wake.height = window.innerHeight * dpr; kctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    window.addEventListener("resize", sizeWake); sizeWake();
+    (function tick() {
+      cx += (mx - cx) * 0.22; cy += (my - cy) * 0.22;
+      cur.style.transform = "translate3d(" + cx + "px," + cy + "px,0)";
+      kctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      if (mode === "terrain") {
+        trail.push({ x: cx, y: cy }); if (trail.length > 28) trail.shift();
+        kctx.lineCap = "round"; kctx.lineJoin = "round";
+        for (var i = 1; i < trail.length; i++) { var a = trail[i - 1], b = trail[i]; kctx.strokeStyle = "rgba(255,241,51," + (i / trail.length * 0.55) + ")"; kctx.lineWidth = 1 + i / trail.length * 5; kctx.beginPath(); kctx.moveTo(a.x, a.y); kctx.lineTo(b.x, b.y); kctx.stroke(); }
+      } else trail = [];
+      requestAnimationFrame(tick);
+    })();
+  }
+
+  /* ---------- Signature ---------- */
+  var STROKES = [
+    { d: "M0,166 C120,156 200,178 300,190 C380,196 470,178 520,142 C560,112 592,86 640,74 C692,62 724,84 726,108 C728,132 712,146 698,141 C686,137 685,126 693,120", speed: 0.95, w: 6.6, pause: 0, tail: 0.12 },
+    { d: "M617,99 C619,116 629,125 645,122", speed: 0.8, w: 4.6, pause: 70, tail: 0.35 },
+    { d: "M649,99 C651,116 661,126 678,124", speed: 0.8, w: 4.6, pause: 60, tail: 0.35 },
+    { d: "M625,141 C621,158 617,174 614,190", speed: 1.1, w: 4.4, pause: 80, tail: 0.5 },
+    { d: "M647,141 C642,164 638,184 636,204", speed: 1.1, w: 4.4, pause: 50, tail: 0.5 },
+    { d: "M669,138 C660,160 655,185 668,203 C680,218 710,220 760,214 C820,207 900,203 960,210 C1020,216 1070,218 1105,210", speed: 1.1, w: 6.6, pause: 110, tail: 0 }
+  ];
+  var SIGPTS = [[1105.0,210.0,0],[1107.0,210.0,107],[1110.6,210.0,108],[1113.6,209.0,111],[1117.7,207.5,115],[1122.3,205.4,120],[1126.3,202.9,125],[1130.9,200.9,129],[1135.0,197.8,132],[1139.5,194.8,136],[1144.1,191.7,140],[1148.7,188.7,144],[1153.3,184.6,148],[1158.3,181.0,152],[1162.4,177.5,156],[1167.5,172.9,160],[1172.0,168.4,164],[1177.2,163.8,168],[1182.2,158.2,173],[1186.8,152.6,177],[1191.8,146.5,182],[1196.5,140.9,186],[1201.0,134.8,190],[1205.1,129.3,194],[1208.1,123.6,198],[1211.7,118.6,202],[1214.7,113.5,206],[1217.3,108.9,216],[1218.8,105.4,223],[1220.8,101.8,224],[1222.3,98.8,224],[1223.9,96.2,230],[1224.9,94.7,233],[1226.4,93.2,237],[1227.4,92.2,240],[1228.4,90.6,246],[1228.9,90.2,249],[1230.0,89.6,253],[1231.0,89.1,257],[1232.0,89.1,261],[1233.0,88.6,264],[1234.0,88.6,268],[1235.6,88.6,273],[1236.6,88.6,277],[1237.5,88.6,281],[1238.6,89.1,286],[1239.6,89.6,290],[1241.1,91.6,293],[1241.6,95.7,297],[1242.2,99.3,301],[1243.2,104.3,307],[1244.2,110.0,311],[1244.7,116.6,315],[1245.2,122.7,319],[1245.7,129.8,323],[1246.7,136.8,327],[1247.2,143.4,332],[1247.7,150.5,336],[1248.2,157.1,340],[1248.8,163.8,345],[1249.3,169.4,349],[1249.8,175.5,354],[1249.8,180.0,357],[1250.3,185.1,373],[1250.3,189.7,373],[1250.3,193.7,374],[1250.3,197.8,374],[1250.3,201.4,379],[1250.3,203.9,382],[1250.3,206.9,386],[1250.3,209.5,390],[1250.3,211.5,396],[1250.3,213.5,402],[1250.3,215.1,407],[1250.3,216.1,423],[1250.3,215.1,473],[1250.3,214.1,475],[1250.3,212.5,479],[1250.3,210.5,483],[1250.3,207.5,490],[1250.3,203.4,507],[1250.3,199.3,507],[1250.3,194.3,508],[1250.3,188.7,508],[1250.3,181.6,512],[1250.3,173.9,516],[1250.3,166.3,520],[1250.3,157.7,524],[1251.3,150.1,528],[1252.8,143.0,532],[1254.3,135.9,536],[1256.9,129.8,540],[1258.9,124.1,549],[1262.0,119.6,557],[1264.5,115.5,557],[1268.0,112.0,558],[1272.1,109.5,562],[1276.2,107.4,565],[1281.3,105.9,570],[1286.8,104.8,574],[1291.9,104.3,578],[1298.0,104.3,582],[1303.6,104.3,586],[1309.7,104.3,590],[1315.3,104.3,594],[1320.9,104.3,599],[1325.9,105.4,603],[1330.5,106.4,607],[1334.6,107.9,623],[1337.6,110.9,623],[1340.2,113.5,624],[1342.2,116.6,624],[1342.7,119.6,628],[1342.2,122.1,631],[1341.7,126.2,636],[1341.7,129.8,640],[1337.1,133.8,643],[1331.0,138.4,648],[1323.9,143.0,652],[1316.3,147.0,657],[1307.7,151.6,661],[1298.5,155.2,665],[1288.9,159.7,670],[1279.7,163.8,674],[1270.1,166.8,678],[1260.9,170.4,682],[1252.3,173.9,686],[1243.7,177.0,690],[1236.6,179.0,695],[1229.5,181.6,700],[1224.3,183.6,704],[1219.3,185.1,707],[1216.8,186.6,715],[1214.7,187.6,721],[1213.7,188.2,724],[1213.7,189.2,740],[1217.3,189.2,743],[1221.8,189.2,747],[1227.9,189.2,752],[1234.5,189.2,757],[1242.2,189.2,761],[1250.8,189.2,765],[1260.4,189.2,769],[1270.6,189.2,774],[1280.7,188.7,778],[1291.9,187.6,782],[1303.1,187.6,786],[1314.3,187.6,790],[1324.4,187.6,795],[1335.1,187.6,800],[1343.2,189.7,804],[1350.3,192.2,807],[1355.9,195.8,813],[1359.5,199.8,818],[1361.5,202.4,821],[1361.5,205.4,824],[1362.0,208.0,828],[1361.5,210.5,832],[1360.0,213.0,837],[1358.4,215.1,841],[1353.4,218.1,844],[1346.8,221.2,848],[1338.6,225.2,852],[1330.0,229.8,857],[1320.4,234.9,861],[1309.2,240.0,865],[1298.5,245.5,870],[1287.3,250.6,874],[1276.2,255.7,878],[1265.0,260.3,883],[1255.4,263.8,886],[1246.2,267.4,890],[1238.1,269.9,896],[1231.0,271.4,900],[1225.4,272.5,904],[1220.8,272.5,907],[1218.3,272.5,919],[1217.3,272.5,924],[1218.3,270.4,940],[1220.3,267.4,940],[1225.9,263.8,941],[1233.5,260.3,941],[1241.1,256.2,944],[1250.8,251.6,949],[1260.4,248.1,953],[1270.1,243.5,957],[1279.7,238.9,961],[1289.9,234.9,965],[1299.5,230.3,970],[1309.7,225.7,974],[1318.3,221.7,979],[1326.4,217.1,983],[1333.0,213.0,987],[1338.6,209.5,990],[1342.7,205.4,997],[1345.2,202.4,1001],[1346.2,199.8,1004],[1345.7,197.3,1007],[1345.7,194.8,1010],[1345.7,192.2,1013],[1342.7,189.7,1017],[1337.6,187.1,1024],[1331.5,184.1,1040],[1322.9,181.0,1040],[1313.2,178.5,1041],[1302.1,176.4,1041],[1290.4,175.0,1045],[1277.7,173.9,1049],[1265.5,172.9,1053],[1252.8,172.9,1057],[1240.6,172.9,1061],[1228.4,172.9,1066],[1216.8,172.9,1070],[1205.6,172.9,1074],[1195.9,174.4,1079],[1186.8,176.0,1083],[1179.2,178.5,1087],[1172.0,181.6,1091],[1167.0,185.1,1107],[1162.4,188.7,1107],[1158.3,191.2,1108],[1156.3,194.8,1108],[1154.8,197.8,1113],[1153.3,200.3,1117],[1152.7,202.4,1120],[1152.7,204.9,1124],[1152.7,207.5,1128],[1152.7,210.0,1132],[1154.3,212.5,1137],[1155.8,214.6,1141],[1159.9,217.6,1148],[1166.5,220.1,1157],[1173.1,222.7,1157],[1181.2,225.2,1158],[1190.4,227.3,1162],[1200.0,228.8,1165],[1210.7,230.8,1170],[1222.3,231.8,1174],[1234.0,232.8,1178],[1246.2,233.4,1182],[1258.4,233.4,1186],[1271.6,233.4,1191],[1283.8,233.4,1195],[1296.0,233.4,1199],[1307.7,232.3,1203],[1318.3,230.8,1207],[1327.5,227.3,1212],[1335.1,222.7,1217],[1340.7,217.6,1221],[1344.7,212.5,1224],[1346.8,206.9,1228],[1346.8,201.4,1232],[1346.8,194.8,1237],[1346.8,189.2,1241],[1343.7,183.1,1245],[1339.1,178.0,1248],[1332.5,172.9,1253],[1323.9,168.4,1258],[1313.8,164.8,1262],[1302.6,162.3,1266],[1290.4,160.7,1270],[1277.7,160.2,1274],[1264.5,160.2,1278],[1250.8,160.2,1282],[1237.1,161.8,1287],[1223.9,164.3,1291],[1211.7,167.8,1295],[1199.5,173.4,1300],[1188.8,178.5,1304],[1179.2,184.1,1308],[1170.6,189.7,1313],[1162.4,195.3,1317],[1156.3,200.3,1321],[1150.8,204.9,1324],[1146.7,209.5,1330],[1144.1,213.0,1335],[1142.6,216.1,1338],[1142.1,218.6,1341],[1141.6,220.7,1347],[1142.1,222.2,1351],[1142.1,224.2,1357],[1142.6,225.2,1358],[1146.7,226.2,1361],[1152.2,227.8,1364],[1158.8,228.3,1369],[1167.5,228.8,1374],[1177.7,228.8,1378],[1188.8,228.8,1382],[1201.5,228.8,1386],[1214.7,228.8,1391],[1228.4,228.8,1407],[1242.7,228.8,1407],[1257.9,227.3,1408],[1273.6,225.2,1408],[1289.4,223.2,1412],[1306.1,221.2,1416],[1322.4,219.1,1420],[1338.6,217.6,1424],[1354.9,215.6,1429],[1370.1,214.1,1433],[1384.3,212.5,1437],[1397.5,211.0,1441],[1410.7,209.0,1446],[1423.0,207.5,1450],[1434.6,205.4,1454],[1444.8,203.4,1458],[1453.9,201.9,1463],[1462.1,199.8,1467],[1468.7,197.3,1471],[1475.3,195.3,1474],[1480.3,193.2,1479],[1484.9,191.2,1484],[1488.5,190.2,1488],[1491.5,188.7,1491],[1494.6,187.6,1499],[1496.6,187.1,1504],[1498.1,186.6,1508]];
+  var VB = { x: 0, y: 40, w: 1500, h: 250 }, NS = "http://www.w3.org/2000/svg";
+  var probe = document.createElementNS(NS, "svg"); probe.setAttribute("width", "0"); probe.setAttribute("height", "0"); probe.style.position = "absolute"; probe.style.visibility = "hidden"; document.body.appendChild(probe);
+  function noise(t, s) { return Math.sin(t * 0.021 + s) * 0.6 + Math.sin(t * 0.057 + s * 2.3) * 0.4; }
+  var TRACKS = STROKES.map(function (s, k) {
+    var p = document.createElementNS(NS, "path"); p.setAttribute("d", s.d); probe.appendChild(p);
+    var len = p.getTotalLength(), pts = [];
+    for (var l = 0; l <= len; l += 2) {
+      var a = p.getPointAtLength(l), b = p.getPointAtLength(Math.min(len, l + 1)), nx = -(b.y - a.y), ny = b.x - a.x, nl = Math.hypot(nx, ny) || 1, j = noise(l, k * 7.1) * 0.9, u = l / len;
+      var st = Math.min(1, u / 0.05), en = s.tail > 0 ? Math.min(1, (1 - u) / s.tail) : 1, taper = Math.pow(Math.max(0.08, Math.min(st, en)), 0.7), press = 0.78 + 0.22 * noise(l * 1.7, s.w * 3);
+      pts.push({ x: a.x + nx / nl * j, y: a.y + ny / nl * j, t: l / s.speed, w: s.w * taper * press });
+    }
+    return { pts: pts, pause: s.pause };
+  });
+  (function () {
+    var pts = [], n = SIGPTS.length;
+    for (var i = 0; i < n; i++) { var a = SIGPTS[Math.max(0, i - 1)], b = SIGPTS[Math.min(n - 1, i + 1)], dt = Math.max(8, b[2] - a[2]), v = Math.hypot(b[0] - a[0], b[1] - a[1]) / dt, u = i / (n - 1), en = Math.min(1, (1 - u) / 0.12); pts.push({ x: SIGPTS[i][0], y: SIGPTS[i][1], t: SIGPTS[i][2], w: Math.max(3.6, Math.min(7.6, 7.6 - v * 3.2)) * Math.pow(Math.max(0.15, en), 0.6) }); }
+    TRACKS.push({ pts: pts, pause: 0 });
+  })();
+  var sign = document.getElementById("sign"), sctx = sign.getContext("2d"), signToken = null;
+  function signSetup() { var r = sign.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); sign.width = Math.max(1, Math.round(r.width * dpr)); sign.height = Math.max(1, Math.round(r.width * VB.h / VB.w * dpr)); var k = sign.width / VB.w; sctx.setTransform(k, 0, 0, k, -VB.x * k, -VB.y * k); sctx.lineCap = "round"; sctx.lineJoin = "round"; sctx.strokeStyle = mode === "terrain" ? "#FFF133" : "#111110"; sctx.clearRect(VB.x, VB.y, VB.w, VB.h); }
+  function sseg(tr, i) { var a = tr.pts[i - 1], b = tr.pts[i]; sctx.lineWidth = (a.w + b.w) / 2; sctx.beginPath(); sctx.moveTo(a.x, a.y); sctx.lineTo(b.x, b.y); sctx.stroke(); }
+  function signAll() { signSetup(); TRACKS.forEach(function (tr) { for (var i = 1; i < tr.pts.length; i++) sseg(tr, i); }); }
+  function signPlay() {
+    if (reduce) { signAll(); return; }
+    signSetup(); var token = {}; signToken = token;
+    var t = 0, plan = TRACKS.map(function (tr) { t += tr.pause; var s = t; t += tr.pts[tr.pts.length - 1].t; return { tr: tr, start: s, done: 1 }; }), t0 = null;
+    function frame(ts) { if (signToken !== token) return; if (t0 === null) t0 = ts; var el = ts - t0, active = false; plan.forEach(function (p) { var pts = p.tr.pts; while (p.done < pts.length && pts[p.done].t <= el - p.start) { sseg(p.tr, p.done); p.done++; } if (p.done < pts.length) active = true; }); if (active) requestAnimationFrame(frame); }
+    requestAnimationFrame(frame);
+  }
+  signAll();
+  if ("IntersectionObserver" in window && !reduce) { var sio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { signPlay(); sio.disconnect(); } }, { threshold: 0.7 }); sio.observe(sign); }
+  listeners.push(function () { signToken = null; signAll(); });
+  window.addEventListener("resize", function () { signToken = null; signAll(); });
+
+  var saved = null;
+  try { saved = localStorage.getItem("lecture"); } catch (e) {}
+  applyMode(saved === "terrain" ? "terrain" : "strategie");
+})();
+</script>
+</body>
+</html>
