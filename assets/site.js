@@ -393,6 +393,7 @@
       tip.addEventListener("pointerenter", function () { clearTimeout(closeT); });
       tip.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") laterClose(); });
       host.appendChild(tip); openPin = i; pinEls[i].setAttribute("aria-expanded", "true"); placeTip(i);
+      if (stick) { var tb = tip.getBoundingClientRect(), hb = (document.querySelector(".bar") || {}).offsetHeight || 64; if (tb.top < hb + 8) window.scrollBy({ top: tb.top - hb - 12, behavior: "smooth" }); else if (tb.bottom > window.innerHeight - 8) window.scrollBy({ top: tb.bottom - window.innerHeight + 12, behavior: "smooth" }); }
     }
     cfg.pins.forEach(function (p, i) {
       var b = document.createElement("button"); b.type = "button"; b.className = "pin " + p.type + (p.below ? " below" : "") + (i === 0 ? " invite" : "");
@@ -421,7 +422,7 @@
       host.appendChild(legendEl);
     }
     host.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse" && !sticky) laterClose(); });
-    document.addEventListener("click", function (e) { if (!host.contains(e.target)) closeTip(); });
+    document.addEventListener("pointerdown", function (e) { if (tip && !e.target.closest(".tip, .pin")) closeTip(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeTip(); });
 
     var lastTs = null;
@@ -667,7 +668,10 @@
     var pr = plot.getBoundingClientRect(), br = b.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight;
     var cx = br.left + br.width / 2 - pr.left, cy = br.top + br.height / 2 - pr.top;
     tip.style.left = Math.min(Math.max(0, cx - tw / 2), pr.width - tw) + "px";
-    var top = cy - th - 22; tip.style.top = (top + pr.top < 70 ? cy + 22 : top) + "px";
+    var lr = box.getBoundingClientRect(), top = cy - th - 22;
+    if (top + pr.top < lr.top - 120) top = Math.min(cy + 22, lr.bottom - pr.top - th);
+    tip.style.top = top + "px";
+    if (stick) { var tb = tip.getBoundingClientRect(), hb = (document.querySelector(".bar") || {}).offsetHeight || 64; if (tb.top < hb + 8) window.scrollBy({ top: tb.top - hb - 12, behavior: "smooth" }); else if (tb.bottom > window.innerHeight - 8) window.scrollBy({ top: tb.bottom - window.innerHeight + 12, behavior: "smooth" }); }
   }
   btns.forEach(function (b, k) {
     if (k === 0) b.classList.add("invite");
@@ -676,7 +680,7 @@
     b.addEventListener("focus", function () { if (b.matches(":focus-visible")) show(b, false); });
     b.addEventListener("click", function (e) { e.stopPropagation(); if (open === b && sticky) close(); else show(b, true); });
   });
-  document.addEventListener("click", function (e) { if (!box.contains(e.target)) close(); });
+  document.addEventListener("pointerdown", function (e) { if (tip && !e.target.closest(".ltip, .lp")) close(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
 })();
 
