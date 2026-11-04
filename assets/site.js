@@ -87,12 +87,12 @@
         { u: 0.04, type: "formation", when: "2021 - 2024", title: "Licence STAPS", text: "Mention management du sport. D'abord le sport compris par le corps, la société et la pratique (physiologie, sociologie, sports collectifs, individuels et de pleine nature), puis le sport vu comme un secteur : marketing du sport, droit, gestion, organisation d'événements et stages en structure." },
         { u: 0.17, type: "exp", when: "Septembre 2023", title: "WURIT", text: "World University Rugby Invitational Tournament. Journaliste bénévole : interviews de joueurs et d'entraîneurs, en français et en anglais, au bord du terrain." },
         { u: 0.28, type: "exp", when: "Printemps 2024", title: "Homie Boards", text: "Stage de 2 mois en Licence 3. Louer des planches, conseiller, négocier : la glisse côté commerce, à Biarritz." },
-        { u: 0.37, type: "exp", when: "Mai 2024", title: "Relais de la Flamme", text: "Mission bénévole : encadrer une quinzaine de bénévoles sur le parcours olympique à Bordeaux." },
-        { u: 0.47, type: "formation", when: "2024 - 2025", title: "Master 1", text: "Marketing stratégique et communication, IAE Bordeaux : stratégie marketing, études de marché, communication et persuasion, marketing digital, droit de la consommation, RSE, analyse de données, datavisualisation et PAO." },
-        { u: 0.58, type: "exp", when: "2025", title: "Newave", text: "Stage de 6 mois en marketing digital et communication : site WordPress, newsletters, réseaux sociaux, plan de diffusion du film de la marque, stand aux championnats universitaires et refonte de l'identité vers un positionnement premium." },
-        { u: 0.68, type: "formation", when: "2025 - 2026", title: "Master 2", text: "Marketing stratégique, IAE Bordeaux : décisions stratégiques, distribution, e-commerce et analyse de panels, avec un mémoire de recherche sur le sponsoring maillot." },
-        { u: 0.79, type: "exp", when: "2025 - 2026", title: "Off The Hook", text: "Consultante en stratégie de marque, en alternance dans une agence de branding bordelaise. Pour des clients de secteurs très variés : audits, positionnements, plateformes de marque, tons de marque, lignes éditoriales et un livre blanc de 56 pages. Pour l'agence : contenus, calendriers éditoriaux et veille. Et des articles de blog pour l'agence comme pour ses clients." },
-        { u: 0.95, type: "suite", when: "2026", title: "Aujourd'hui", text: "À la recherche d'un premier poste en stratégie de marque, marketing ou communication dans le sport, la glisse et l'outdoor." }
+        { u: 0.37, type: "exp", when: "Mai 2024", title: "Relais de la flamme", text: "Mission bénévole : encadrer une quinzaine de bénévoles sur le Relais de la flamme olympique à Bordeaux." },
+        { u: 0.47, type: "formation", when: "2024 - 2025", title: "Master 1", text: "Marketing stratégique et communication à l’IAE Bordeaux : stratégie marketing, études de marché, communication et persuasion, marketing digital, droit de la consommation, RSE, analyse de données, datavisualisation et PAO." },
+        { u: 0.58, type: "exp", when: "2025", title: "Newave", text: "Stage de 6 mois en marketing digital et communication : gestion du site WordPress, newsletters, graphisme, réseaux sociaux, plan de diffusion du film de la marque, stand aux championnats universitaires et participation à la refonte de l’identité vers un positionnement premium." },
+        { u: 0.68, type: "formation", when: "2025 - 2026", title: "Master 2", text: "Marketing stratégique à l’IAE Bordeaux : décisions stratégiques, distribution, e-commerce et analyse de panels, avec un mémoire de recherche sur le sponsoring maillot." },
+        { u: 0.79, type: "exp", when: "2025 - 2026", title: "Off The Hook", text: "Consultante en stratégie de marque, en alternance dans une agence de branding bordelaise. Pour des clients de secteurs très variés : audits, positionnements, plateformes de marque, tons de marque, lignes éditoriales et un livre blanc de 56 pages. Pour l'agence : contenus, calendriers éditoriaux, veille et articles de blog comme pour ses clients." },
+        { u: 0.95, type: "suite", when: "2026", title: "Aujourd'hui", text: "À la recherche d'un premier poste en stratégie de marque, en marketing, ou en communication dans le sport, la glisse et l'outdoor." }
       ]
     },
     newave: {
@@ -102,6 +102,7 @@
       fill: true,
       bands: [[0, 0.16, "Innovateurs, 2,5 %"], [0.16, 0.33, "Premiers adeptes, 13,5 %"], [0.33, 0.5, "Majorité précoce, 34 %"], [0.5, 0.67, "Majorité tardive, 34 %"], [0.67, 1, "Retardataires, 16 %"]],
       gap: [0.318, 0.342],
+      title: "Courbe d'adoption d'une innovation (Rogers, 1962)",
       axisY: "Nombre de surfeurs qui adoptent la planche",
       axisX: "Le temps",
       pins: [
@@ -109,7 +110,7 @@
         { u: 0.22, type: "exp", when: "Mai et juin 2025", title: "Le Kickstarter", text: "Plus de 230 000 dollars levés en un mois. Les premiers adeptes suivent, séduits par la promesse." },
         { u: 0.3, type: "exp", below: true, when: "Mon stage, 2025", title: "Le fossé", text: "Entre les premiers adeptes et la majorité, il faut des preuves. C'est là que se jouait mon travail." },
         { u: 0.365, type: "exp", below: true, when: "Décembre 2025", title: "TikTok", text: "Faire découvrir l'innovation à un public britannique qui ne connaît pas encore la marque." },
-        { u: 0.42, type: "suite", when: "2026", title: "Aujourd'hui", text: "27 000 abonnés sur Instagram et un compte consacré aux contenus de la communauté : la preuve sociale arrive. Position indicative, c'est l'évolution de la marque." }
+        { u: 0.42, type: "suite", when: "2026", title: "Aujourd'hui", text: "27 000 abonnés sur Instagram et un compte consacré aux contenus de la communauté : la preuve sociale arrive. * Position indicative, c'est l'évolution de la marque." }
       ]
     },
     maillot: {
@@ -126,17 +127,20 @@
       },
       fill: true,
       ticks: [[0.25, "3 logos"], [0.5, "5 logos"], [0.75, "7 logos"]],
-      axisY: "Encombrement perçu, sur 7",
+      title: "Encombrement perçu selon le nombre de logos",
+      axisY: "Encombrement perçu, de 1 (aéré) à 7 (surchargé)",
+      ref: { v: 0.5, label: "Milieu de l'échelle" },
       axisX: "Nombre de logos sur le maillot",
       pins: [
-        { u: 0.25, type: "exp", when: "Maillot à 3 logos", title: "3,13 sur 7", text: "Le score d'encombrement moyen le plus bas des trois maillots." },
-        { u: 0.5, type: "exp", when: "Maillot à 5 logos", title: "4,48 sur 7", text: "Nettement plus que le maillot à 3 logos : les répondants le jugent déjà chargé." },
-        { u: 0.75, type: "exp", when: "Maillot à 7 logos", title: "5,22 sur 7", text: "Chacun des trois maillots se distingue significativement des deux autres." }
+        { u: 0.25, type: "exp", when: "Maillot à 3 logos", title: "3,13 sur 7", text: "Avec trois logos, le maillot ne paraît pas surchargé : la note reste sous le milieu de l’échelle." },
+        { u: 0.5, type: "exp", when: "Maillot à 5 logos", title: "4,48 sur 7", text: "Deux logos de plus, et tout change : la note passe au-dessus du milieu de l’échelle. C’est entre 3 et 5 logos que l’impression de surcharge augmente le plus." },
+        { u: 0.75, type: "exp", when: "Maillot à 7 logos", title: "5,22 sur 7", text: "Encore deux logos, encore plus de surcharge, mais un saut deux fois plus petit qu’entre 3 et 5 logos. Et chacun des trois maillots est perçu de façon nettement distincte." }
       ]
     },
     expertise: {
       strat: profile([[0, .12], [.18, .13], [.3, .34], [.4, .36], [.52, .64], [.62, .66], [.72, .76], [.82, .78], [.92, .88], [1, .9]]),
       terr: function (u, t) { return 0.14 + 0.5 * Math.pow(Math.abs(Math.sin(Math.PI * 3 * u)), 0.8) + 0.012 * Math.sin(u * 30 + t * 2); },
+      title: "Une expertise rendue visible, étape par étape",
       rider: "dot",
       riderU: function (t) { return (t * 0.07) % 1; },
       decorate: function (ctx, x, Y, mix) {
@@ -302,6 +306,12 @@
         if (last >= N) { ctx.moveTo(x(lst.u), Y(lst.v)); ctx.lineTo(W, Y(lst.v)); }
         ctx.stroke();
         ctx.globalAlpha = 1;
+      }
+      if (cfg.ref && mix < 0.99) {
+        ctx.save(); ctx.globalAlpha = 1 - mix; ctx.strokeStyle = css("--soft"); ctx.lineWidth = 1.5; ctx.setLineDash([6, 6]);
+        ctx.beginPath(); ctx.moveTo(x(0), Y(cfg.ref.v)); ctx.lineTo(x(1), Y(cfg.ref.v)); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = css("--soft"); ctx.font = "700 13px " + (getComputedStyle(document.body).fontFamily || "sans-serif"); ctx.textAlign = "left";
+        ctx.fillText(cfg.ref.label, x(0) + 4, Y(cfg.ref.v) - 8); ctx.restore();
       }
       if (cfg.decorate && mix > 0.01) cfg.decorate(ctx, x, Y, mix, time);
       /* En Stratégie, un point parcourt la courbe ; en Terrain, une surfeuse la surfe */
@@ -556,10 +566,65 @@
   if ("IntersectionObserver" in window && !reduce) { var sio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { signPlay(); sio.disconnect(); } }, { threshold: 0.7 }); sio.observe(sign); }
   listeners.push(function () { signToken = null; signAll(); });
   window.addEventListener("resize", function () { signToken = null; signAll(); });
+  window.signOn = function (cv, color) {
+    var tr = TRACKS[TRACKS.length - 1], pts = tr.pts, x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    pts.forEach(function (p) { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
+    var pad = 14; x0 -= pad; y0 -= pad; x1 += pad; y1 += pad;
+    var r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1), bw = x1 - x0, bh = y1 - y0;
+    cv.width = Math.max(1, Math.round(r.width * dpr)); cv.height = Math.max(1, Math.round(r.width * bh / bw * dpr)); cv.style.height = (r.width * bh / bw) + "px";
+    var c = cv.getContext("2d"), k = cv.width / bw, m = Math.max(1, 5 * bw / (5.6 * r.width));
+    c.setTransform(k, 0, 0, k, -x0 * k, -y0 * k); c.lineCap = "round"; c.lineJoin = "round"; c.strokeStyle = color; c.clearRect(x0, y0, bw, bh);
+    function seg(i) { var a = pts[i - 1], b = pts[i]; c.lineWidth = (a.w + b.w) / 2 * m; c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(b.x, b.y); c.stroke(); }
+    var tok = {}; cv._tok = tok;
+    if (reduce) { for (var j = 1; j < pts.length; j++) seg(j); return; }
+    var done = 1, t0 = null;
+    function frame(ts) { if (cv._tok !== tok) return; if (t0 === null) t0 = ts; var el = (ts - t0) * 1.6; while (done < pts.length && pts[done].t <= el) { seg(done); done++; } if (done < pts.length) requestAnimationFrame(frame); }
+    requestAnimationFrame(frame);
+  };
+  window.signOff = function (cv) { cv._tok = null; var c = cv.getContext("2d"); c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, cv.width, cv.height); };
 
   var saved = null;
   try { saved = localStorage.getItem("lecture"); } catch (e) {}
   applyMode(saved === "terrain" ? "terrain" : "strategie");
+})();
+
+(function () {
+  function seen(k) { try { return localStorage.getItem(k) === "vu"; } catch (e) { return false; } }
+  function mark(k) { try { localStorage.setItem(k, "vu"); } catch (e) {} }
+  // Bulle d'explication sous les deux boutons (accueil)
+  var hint = document.getElementById("hint");
+  if (hint && !seen("guide")) {
+    var tBtn = document.querySelector('.choice[data-mode="terrain"]'), active = false;
+    var T1 = "Chaque étude se lit de deux façons : d'un point de vue stratégique et d'un point de vue terrain. <b>Essayez : cliquez sur Terrain.</b>";
+    var T2 = "Voici la lecture Terrain : les mêmes études, racontées aux côtés des personnes concernées. Vous pouvez changer de lecture à tout moment, ici ou dans le bandeau en haut de l'écran.";
+    var X = '<button class="x" type="button" aria-label="Fermer l\'explication">×</button>', OK = '<br><button class="ok" type="button">Compris</button>';
+    function close() { hint.classList.remove("on"); tBtn.classList.remove("pulse"); active = false; setTimeout(function () { hint.hidden = true; }, 400); }
+    function step(n) {
+      hint.innerHTML = (n === 2 ? T2 : T1) + (n === 1 ? "" : OK) + X;
+      hint.style.setProperty("--ax", (tBtn.offsetLeft + tBtn.offsetWidth / 2 - 8) + "px");
+      tBtn.classList.toggle("pulse", n === 1);
+      hint.querySelectorAll(".x, .ok").forEach(function (b) { b.addEventListener("click", close); });
+    }
+    document.querySelectorAll(".chooser [data-mode]").forEach(function (b) {
+      b.addEventListener("click", function () { if (active) step(b.dataset.mode === "terrain" ? 2 : 3); });
+    });
+    setTimeout(function () {
+      if (document.documentElement.getAttribute("data-lecture") === "terrain") return;
+      hint.hidden = false; step(1); active = true; mark("guide");
+      requestAnimationFrame(function () { hint.classList.add("on"); });
+    }, 1200);
+  }
+  // Étiquette à côté du bouton du bandeau, la première fois qu'il apparaît
+  var mt = document.getElementById("mini-toggle"), bar = document.querySelector(".bar");
+  if (mt && bar && !seen("bandeau")) {
+    var tag = document.createElement("span"); tag.className = "toggle-tag"; tag.setAttribute("aria-hidden", "true"); tag.textContent = "Changez de lecture ici, à tout moment"; bar.appendChild(tag);
+    var done = false;
+    function show() { if (done) return; done = true; mark("bandeau"); tag.classList.add("on"); setTimeout(function () { tag.classList.remove("on"); }, 4500); }
+    function check() { if (!mt.classList.contains("away")) setTimeout(show, 600); }
+    if (document.getElementById("chooser")) new MutationObserver(check).observe(mt, { attributes: true, attributeFilter: ["class"] });
+    else setTimeout(show, 1500);
+    mt.addEventListener("click", function () { tag.classList.remove("on"); });
+  }
 })();
 
 (function () {
@@ -591,7 +656,7 @@
 (function () {
   try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
   if (!location.hash) window.scrollTo(0, 0);
-  window.addEventListener("pageshow", function (e) { document.documentElement.classList.remove("leaving"); if (e.persisted && !location.hash) window.scrollTo(0, 0); });
+  window.addEventListener("pageshow", function (e) { document.documentElement.classList.remove("leaving"); document.querySelectorAll(".card.pressed").forEach(function (c) { c.classList.remove("pressed"); }); if (e.persisted && !location.hash) window.scrollTo(0, 0); });
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll('a[href$=".html"]').forEach(function (a) {
     a.addEventListener("click", function (e) {
@@ -599,8 +664,48 @@
       e.preventDefault();
       var go = function () { window.location.href = a.href; };
       if (reduce) return go();
-      document.documentElement.classList.add("leaving");
-      setTimeout(go, 320);
+      if (a.classList.contains("card")) {
+        a.classList.add("pressed");
+        setTimeout(function () { document.documentElement.classList.add("leaving"); }, 260);
+        setTimeout(go, 560);
+      } else {
+        document.documentElement.classList.add("leaving");
+        setTimeout(go, 320);
+      }
     });
   });
+})();
+
+(function () {
+  var f = document.getElementById("hero-ph"); if (!f) return;
+  var hero = f.parentElement, imgs = f.querySelectorAll("img"), cv = f.querySelector(".hero-sig");
+  var kick = hero.querySelector(".pro-kicker") || hero.querySelector(".stage-text"), duo = hero.querySelector(".duo");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var top0 = 0, top1 = 0, W0 = 0, H0 = 0, S = 0, cur = -1, signed = false, ticking = false;
+  function measure() {
+    if (getComputedStyle(f).display === "none") return false;
+    f.style.width = ""; f.style.height = ""; f.style.top = "0px";
+    var hr = hero.getBoundingClientRect(), kr = kick.getBoundingClientRect(), dr = duo.getBoundingClientRect(), r = f.getBoundingClientRect();
+    W0 = r.width; H0 = r.height; S = Math.max(150, Math.min(200, W0 * 0.46));
+    top0 = kr.top - hr.top; top1 = Math.max(top0, dr.bottom - hr.top - S);
+    return true;
+  }
+  function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+  function update() {
+    ticking = false; if (!W0) return;
+    var D = top1 - top0, p = D > 0 ? Math.min(1, Math.max(0, window.scrollY / D)) : 1, e = ease(p);
+    if (reduce) { p = window.scrollY > 4 ? 1 : 0; e = p; }
+    f.style.top = (top0 + D * p) + "px";
+    f.style.width = (W0 + (S - W0) * e) + "px"; f.style.height = (H0 + (S - H0) * e) + "px";
+    var k = Math.min(imgs.length - 1, Math.floor(p * imgs.length * 0.999)); if (p >= 1) k = imgs.length - 1;
+    if (k !== cur) { imgs.forEach(function (im, i) { im.classList.toggle("on", i === k); }); cur = k; }
+    if (p >= .85 && !signed) { signed = true; f.classList.add("signed"); if (window.signOn) window.signOn(cv, "#FFF133"); }
+    else if (p < .7 && signed) { signed = false; f.classList.remove("signed"); if (window.signOff) window.signOff(cv); }
+  }
+  function init() { if (measure()) { signed = false; f.classList.remove("signed"); update(); } }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener("resize", init);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+  window.addEventListener("load", init);
+  init();
 })();

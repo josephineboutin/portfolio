@@ -427,14 +427,15 @@ a { color: inherit; }
 :root.pro .card:hover .card-body, :root.pro .card:focus-visible .card-body { background: var(--encre); color: var(--galet); padding: 16px 18px; }
 :root.pro .card:hover .card-body .soon, :root.pro .card:focus-visible .card-body .soon { color: var(--gris-clair); }
 :root.pro .card:hover .pill, :root.pro .card:focus-visible .pill { color: var(--encre); }
-@media (hover: none) {
-  :root.pro .card { color: var(--fg); }
-  :root.pro .card .ph { opacity: 1; }
-  :root.pro .card .ph::after { opacity: 1; }
-  :root.pro .card .card-body { background: var(--encre); color: var(--galet); padding: 16px 18px; }
-  :root.pro .card .card-body .soon { color: var(--gris-clair); }
-  :root.pro .card .pill { color: var(--encre); }
-}
+@media (hover: none) { :root.pro .card { color: var(--fg); } :root.pro .card .ph { opacity: .5; } :root.pro .card .soon { color: var(--soft); } }
+:root.pro .card.pressed { color: var(--fg); }
+:root.pro .card.pressed .ph { opacity: 1; transition-duration: 180ms; }
+:root.pro .card.pressed .ph img { filter: grayscale(1) contrast(1.08); transition-duration: 180ms; }
+:root.pro .card.pressed .ph::after { opacity: 1; transition-duration: 180ms; }
+:root.pro .card.pressed .card-body { background: var(--encre); color: var(--galet); padding: 16px 18px; transition-duration: 180ms; }
+:root.pro .card.pressed .card-body .soon { color: var(--gris-clair); }
+:root.pro .card.pressed .pill { color: var(--encre); }
+:root.pro .card.pressed { transform: scale(.985); transition: transform 150ms var(--ease); }
 .end.short { padding-top: var(--s-block); }
 .back { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; text-decoration: none; color: var(--soft); }
 .back:hover { color: var(--fg); }
@@ -448,6 +449,48 @@ html.leaving body { opacity: 0; transition: opacity 300ms ease; }
 /* Bandeau derrière la barre de chapitres : le texte ne passe plus autour de la pastille */
 .chapbar::before { content: ""; position: absolute; inset: -4px 0 -10px; z-index: -1; background: color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); -webkit-mask: linear-gradient(#000 75%, transparent); mask: linear-gradient(#000 75%, transparent); pointer-events: none; }
 .case-stage .curve { margin-top: 56px; }
+@media (min-width: 761px) { .kpis:has(> div:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.end .lead-sub { margin: 0; font-size: 17px; color: var(--soft); max-width: 60ch; }
+.contact:has(.c-cv) { grid-template-columns: repeat(4, minmax(0, 220px)); }
+@media (max-width: 560px) { .contact:has(.c-cv) { grid-template-columns: minmax(0, 1fr); } }
+.contact a.c-cv { --c: #111110; }
+:root[data-lecture="terrain"] .contact a.c-cv { --c: #FFF133; }
+.heard .heard-s { font-size: 17px; line-height: 1.45; background: var(--surface); padding: 10px 16px; max-width: 46ch; }
+.heard .heard-s:nth-of-type(2) { margin-left: clamp(16px, 4vw, 48px); }
+.chap.alt .heard .heard-s { background: var(--bg); }
+:root[data-lecture="terrain"] .case-stage .curve-title { opacity: 0; }
+.case-stage .curve .curve-title { transition: opacity 400ms var(--ease); font-size: clamp(20px, 1.9vw, 26px); line-height: 1.15; max-width: 60%; white-space: normal; }
+/* ---------- Photos de l'accueil (grand écran) ---------- */
+.hero-ph { display: none; }
+@media (min-width: 900px) {
+  :root { --phw: clamp(280px, 30vw, 430px); }
+  .hero .stage-text { padding-right: calc(var(--phw) + 56px); }
+  .hero-ph { display: block; position: absolute; z-index: 3; margin: 0; right: var(--edge); top: 0; width: var(--phw); height: calc(var(--phw) * 1.25); overflow: visible; background: #F2F2EF; will-change: width, height, top; }
+  .hero-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 450ms var(--ease); }
+  .hero-ph img.on { opacity: 1; }
+  .hero-ph .hero-sig { position: absolute; left: -10%; width: 150%; bottom: 6%; opacity: 0; transition: opacity 300ms var(--ease); pointer-events: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
+  .hero-ph.signed .hero-sig { opacity: 1; }
+}
+
+/* ---------- Bulle d'explication (accueil, première visite) ---------- */
+.hint { position: relative; pointer-events: auto; max-width: 440px; margin-top: 4px; background: var(--encre); color: var(--galet); padding: 14px 44px 14px 16px; font-size: 15px; line-height: 1.45; opacity: 0; transform: translateY(8px); transition: opacity 400ms var(--ease), transform 400ms var(--ease), background-color 400ms var(--ease), color 400ms var(--ease); }
+:root[data-lecture="terrain"] .hint { background: #F2F2EF; color: #141413; }
+.hint.on { opacity: 1; transform: none; }
+.hint::before { content: ""; position: absolute; top: -8px; left: var(--ax, 70%); width: 16px; height: 16px; background: inherit; transform: rotate(45deg); }
+:root.pro body .hint::before { border-radius: 2px !important; }
+.hint b { color: var(--jaune); }
+:root[data-lecture="terrain"] .hint b { color: #141413; background: var(--jaune); padding: 0 4px; }
+.hint .x { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; background: none; color: inherit; font-size: 22px; line-height: 1; cursor: pointer; }
+.hint .ok { display: inline-block; margin-top: 10px; appearance: none; border: 0; background: var(--jaune); color: var(--encre); font: 700 14px var(--f-texte); padding: 8px 14px; cursor: pointer; }
+.choice.pulse { animation: choice-pulse 1.6s ease-in-out 3; }
+@keyframes choice-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,241,51,0); } 50% { box-shadow: 0 0 0 8px rgba(255,241,51,.55); } }
+/* Étiquette du bandeau, la première fois que le bouton apparaît */
+.bar .toggle-tag { position: absolute; top: calc(100% - 4px); right: var(--edge); z-index: 30; background: var(--encre); color: var(--galet); font-size: 14px; font-weight: 700; padding: 8px 12px; opacity: 0; transform: translateY(-6px); transition: opacity 350ms var(--ease), transform 350ms var(--ease); pointer-events: none; white-space: nowrap; }
+:root[data-lecture="terrain"] .bar .toggle-tag { background: #F2F2EF; color: #141413; }
+.bar .toggle-tag::before { content: ""; position: absolute; top: -6px; right: 40px; width: 12px; height: 12px; background: inherit; transform: rotate(45deg); }
+.bar .toggle-tag.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .choice.pulse { animation: none; } }
+
 /* ---------- Parcours côté Terrain : les sports, piste par piste ---------- */
 .hero .stage-foot { position: relative; z-index: 2; pointer-events: none; height: clamp(460px, 36vw, 500px); }
 .lanes { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr; gap: 28px; padding-top: 40px; padding-bottom: 24px; opacity: 0; visibility: hidden; transition: opacity 500ms var(--ease), visibility 0s 500ms; }
