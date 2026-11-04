@@ -55,7 +55,7 @@
   document.querySelectorAll('.next-case[aria-disabled="true"]').forEach(function (c) { c.addEventListener("click", function (e) { e.preventDefault(); }); });
   /* Le petit interrupteur n'apparaît dans la barre qu'une fois le grand choix dépassé */
   var miniT = document.getElementById("mini-toggle"), chooser = document.getElementById("chooser");
-  if (chooser && "IntersectionObserver" in window) new IntersectionObserver(function (en) { miniT.classList.toggle("away", en[0].isIntersecting); }, { rootMargin: "-70px 0px 0px 0px" }).observe(chooser);
+  if (chooser && "IntersectionObserver" in window) new IntersectionObserver(function (en) { miniT.classList.toggle("away", en[0].isIntersecting || en[0].boundingClientRect.top > 0); }, { rootMargin: "-70px 0px 0px 0px" }).observe(chooser);
   else miniT.classList.remove("away");
   document.querySelectorAll('.card[aria-disabled="true"]').forEach(function (c) { c.addEventListener("click", function (e) { e.preventDefault(); }); });
 
@@ -372,23 +372,36 @@
       tip.style.left = Math.min(Math.max(8, px - tw / 2), W - tw - 8) + "px";
       var top = py - th - 24; tip.style.top = (top < 0 ? py + 24 : top) + "px";
     }
-    function closeTip() { if (tip) { tip.remove(); tip = null; } if (openPin !== null) pinEls[openPin].setAttribute("aria-expanded", "false"); openPin = null; }
-    function openTip(i) {
-      if (openPin === i) return; closeTip();
-      var p = cfg.pins[i];
+    var sticky = false, closeT = null;
+    function closeTip() { clearTimeout(closeT); if (tip) { tip.remove(); tip = null; } if (openPin !== null) pinEls[openPin].setAttribute("aria-expanded", "false"); openPin = null; sticky = false; }
+    function laterClose() { clearTimeout(closeT); closeT = setTimeout(function () { if (!sticky) closeTip(); }, 220); }
+    function openTip(i, stick) {
+      clearTimeout(closeT); host.classList.add("used");
+      if (openPin === i) { if (stick) sticky = true; return; }
+      closeTip(); sticky = !!stick;
+      var p = cfg.pins[i], n = cfg.pins.length;
       tip = document.createElement("div"); tip.className = "tip"; tip.setAttribute("role", "status");
-      tip.innerHTML = '<span class="when"></span><strong></strong><span class="txt"></span>';
+      tip.innerHTML = '<span class="when"></span><strong></strong><span class="txt"></span><span class="tip-nav"><button type="button" class="tip-prev" aria-label="Repère précédent">←</button><span class="tip-cnt"></span><button type="button" class="tip-next">Suivant →</button></span>';
       tip.querySelector(".when").textContent = p.when; tip.querySelector("strong").textContent = p.title; tip.querySelector(".txt").textContent = p.text;
+      tip.querySelector(".tip-cnt").textContent = (i + 1) + " / " + n;
+      var pv = tip.querySelector(".tip-prev"), nx = tip.querySelector(".tip-next");
+      if (i === 0) pv.disabled = true;
+      if (i === n - 1) nx.textContent = "Fermer";
+      pv.addEventListener("click", function (e) { e.stopPropagation(); if (i > 0) openTip(i - 1, true); });
+      nx.addEventListener("click", function (e) { e.stopPropagation(); if (i < n - 1) openTip(i + 1, true); else closeTip(); });
+      tip.addEventListener("click", function (e) { e.stopPropagation(); sticky = true; });
+      tip.addEventListener("pointerenter", function () { clearTimeout(closeT); });
+      tip.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") laterClose(); });
       host.appendChild(tip); openPin = i; pinEls[i].setAttribute("aria-expanded", "true"); placeTip(i);
     }
     cfg.pins.forEach(function (p, i) {
-      var b = document.createElement("button"); b.type = "button"; b.className = "pin " + p.type + (p.below ? " below" : "");
+      var b = document.createElement("button"); b.type = "button"; b.className = "pin " + p.type + (p.below ? " below" : "") + (i === 0 ? " invite" : "");
       b.setAttribute("aria-label", p.title + ", " + p.when); b.setAttribute("aria-expanded", "false");
       var lab = document.createElement("span"); lab.className = "pin-label"; lab.textContent = p.title; lab.setAttribute("aria-hidden", "true"); b.appendChild(lab);
-      b.addEventListener("mouseenter", function () { openTip(i); });
-      b.addEventListener("mouseleave", function () { if (openPin === i) closeTip(); });
-      b.addEventListener("focus", function () { openTip(i); });
-      b.addEventListener("click", function (e) { e.stopPropagation(); if (openPin === i) closeTip(); else openTip(i); });
+      b.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") openTip(i, false); });
+      b.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse" && openPin === i) laterClose(); });
+      b.addEventListener("focus", function () { if (b.matches(":focus-visible")) openTip(i, false); });
+      b.addEventListener("click", function (e) { e.stopPropagation(); if (openPin === i && sticky) closeTip(); else openTip(i, true); });
       host.appendChild(b); pinEls.push(b);
     });
     (cfg.ticks || (cfg.bands || []).map(function (b) { return [(b[0] + b[1]) / 2, b[2]]; })).forEach(function (t) {
@@ -400,13 +413,14 @@
     });
     if (cfg.title) {
       titleEl = document.createElement("h2"); titleEl.className = "titre curve-title"; titleEl.textContent = cfg.title; host.appendChild(titleEl);
+      var hintEl = document.createElement("span"); hintEl.className = "curve-hint"; hintEl.setAttribute("aria-hidden", "true"); hintEl.innerHTML = '<i></i><span class="h-d">Survolez ou cliquez sur les points pour en savoir plus</span><span class="h-m">Touchez les points pour en savoir plus</span>'; titleEl.appendChild(hintEl);
     }
     if (cfg.legend) {
       legendEl = document.createElement("div"); legendEl.className = "legend-pins"; legendEl.setAttribute("aria-hidden", "true");
       legendEl.innerHTML = '<span><i style="background:#16323A"></i>Formation</span><span><i style="background:#FFF133"></i>Expérience</span><span><i style="background:#FFFFFF"></i>Aujourd\'hui</span>';
       host.appendChild(legendEl);
     }
-    host.addEventListener("mouseleave", closeTip);
+    host.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse" && !sticky) laterClose(); });
     document.addEventListener("click", function (e) { if (!host.contains(e.target)) closeTip(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeTip(); });
 
@@ -622,32 +636,45 @@
     function show() { if (done) return; done = true; mark("bandeau"); tag.classList.add("on"); setTimeout(function () { tag.classList.remove("on"); }, 4500); }
     function check() { if (!mt.classList.contains("away")) setTimeout(show, 600); }
     if (document.getElementById("chooser")) new MutationObserver(check).observe(mt, { attributes: true, attributeFilter: ["class"] });
-    else setTimeout(show, 1500);
+    else { var onS = function () { if (window.scrollY > window.innerHeight * 0.5) { window.removeEventListener("scroll", onS); setTimeout(show, 300); } }; window.addEventListener("scroll", onS, { passive: true }); }
     mt.addEventListener("click", function () { tag.classList.remove("on"); });
   }
 })();
 
 (function () {
   var box = document.getElementById("lanes"); if (!box) return;
-  var plot = box.querySelector(".lanes-plot"), tip = null, open = null;
-  function close() { if (tip) { tip.remove(); tip = null; } if (open) open.setAttribute("aria-expanded", "false"); open = null; }
-  function show(b) {
-    if (open === b) return; close();
+  var plot = box.querySelector(".lanes-plot"), tip = null, open = null, sticky = false, closeT = null;
+  var btns = [].slice.call(box.querySelectorAll(".lp")).sort(function (a, b) { return +a.dataset.i - +b.dataset.i; });
+  function close() { clearTimeout(closeT); if (tip) { tip.remove(); tip = null; } if (open) open.setAttribute("aria-expanded", "false"); open = null; sticky = false; }
+  function later() { clearTimeout(closeT); closeT = setTimeout(function () { if (!sticky) close(); }, 220); }
+  function show(b, stick) {
+    clearTimeout(closeT); box.classList.add("used");
+    if (open === b) { if (stick) sticky = true; return; }
+    close(); sticky = !!stick;
+    var k = btns.indexOf(b), n = btns.length;
     tip = document.createElement("div"); tip.className = "ltip"; tip.setAttribute("role", "status");
-    tip.innerHTML = '<span class="when"></span><strong></strong><span class="txt"></span>';
+    tip.innerHTML = '<span class="when"></span><strong></strong><span class="txt"></span><span class="tip-nav"><button type="button" class="tip-prev" aria-label="Repère précédent">←</button><span class="tip-cnt"></span><button type="button" class="tip-next">Suivant →</button></span>';
     tip.querySelector(".when").textContent = b.dataset.when; tip.querySelector("strong").textContent = b.dataset.title; tip.querySelector(".txt").textContent = b.dataset.text;
+    tip.querySelector(".tip-cnt").textContent = (k + 1) + " / " + n;
+    var pv = tip.querySelector(".tip-prev"), nx = tip.querySelector(".tip-next");
+    if (k === 0) pv.disabled = true; if (k === n - 1) nx.textContent = "Fermer";
+    pv.addEventListener("click", function (e) { e.stopPropagation(); if (k > 0) show(btns[k - 1], true); });
+    nx.addEventListener("click", function (e) { e.stopPropagation(); if (k < n - 1) show(btns[k + 1], true); else close(); });
+    tip.addEventListener("click", function (e) { e.stopPropagation(); sticky = true; });
+    tip.addEventListener("pointerenter", function () { clearTimeout(closeT); });
+    tip.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") later(); });
     plot.appendChild(tip); open = b; b.setAttribute("aria-expanded", "true");
     var pr = plot.getBoundingClientRect(), br = b.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight;
     var cx = br.left + br.width / 2 - pr.left, cy = br.top + br.height / 2 - pr.top;
     tip.style.left = Math.min(Math.max(0, cx - tw / 2), pr.width - tw) + "px";
     var top = cy - th - 22; tip.style.top = (top + pr.top < 70 ? cy + 22 : top) + "px";
   }
-  box.querySelectorAll(".lp").forEach(function (b) {
-    b.addEventListener("mouseenter", function () { show(b); });
-    b.addEventListener("mouseleave", function () { if (open === b) close(); });
-    b.addEventListener("focus", function () { show(b); });
-    b.addEventListener("blur", function () { if (open === b) close(); });
-    b.addEventListener("click", function (e) { e.stopPropagation(); if (open === b) close(); else show(b); });
+  btns.forEach(function (b, k) {
+    if (k === 0) b.classList.add("invite");
+    b.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") show(b, false); });
+    b.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse" && open === b) later(); });
+    b.addEventListener("focus", function () { if (b.matches(":focus-visible")) show(b, false); });
+    b.addEventListener("click", function (e) { e.stopPropagation(); if (open === b && sticky) close(); else show(b, true); });
   });
   document.addEventListener("click", function (e) { if (!box.contains(e.target)) close(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
@@ -677,35 +704,57 @@
 })();
 
 (function () {
-  var f = document.getElementById("hero-ph"); if (!f) return;
-  var hero = f.parentElement, imgs = f.querySelectorAll("img"), cv = f.querySelector(".hero-sig");
-  var kick = hero.querySelector(".pro-kicker") || hero.querySelector(".stage-text"), duo = hero.querySelector(".duo");
+  var run = document.getElementById("pin-run"); if (!run) return;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var top0 = 0, top1 = 0, W0 = 0, H0 = 0, S = 0, cur = -1, signed = false, ticking = false;
-  function measure() {
-    if (getComputedStyle(f).display === "none") return false;
-    f.style.width = ""; f.style.height = ""; f.style.top = "0px";
-    var hr = hero.getBoundingClientRect(), kr = kick.getBoundingClientRect(), dr = duo.getBoundingClientRect(), r = f.getBoundingClientRect();
-    W0 = r.width; H0 = r.height; S = Math.max(150, Math.min(200, W0 * 0.46));
-    top0 = kr.top - hr.top; top1 = Math.max(top0, dr.bottom - hr.top - S);
-    return true;
-  }
   function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
-  function update() {
-    ticking = false; if (!W0) return;
-    var D = top1 - top0, p = D > 0 ? Math.min(1, Math.max(0, window.scrollY / D)) : 1, e = ease(p);
-    if (reduce) { p = window.scrollY > 4 ? 1 : 0; e = p; }
-    f.style.top = (top0 + D * p) + "px";
-    f.style.width = (W0 + (S - W0) * e) + "px"; f.style.height = (H0 + (S - H0) * e) + "px";
-    var k = Math.min(imgs.length - 1, Math.floor(p * imgs.length * 0.999)); if (p >= 1) k = imgs.length - 1;
-    if (k !== cur) { imgs.forEach(function (im, i) { im.classList.toggle("on", i === k); }); cur = k; }
-    if (p >= .85 && !signed) { signed = true; f.classList.add("signed"); if (window.signOn) window.signOn(cv, "#FFF133"); }
-    else if (p < .7 && signed) { signed = false; f.classList.remove("signed"); if (window.signOff) window.signOff(cv); }
+  function pick(imgs, q, cur) { var k = q >= 1 ? imgs.length - 1 : Math.min(imgs.length - 1, Math.floor(q * imgs.length)); if (k !== cur) imgs.forEach(function (im, i) { im.classList.toggle("on", i === k); }); return k; }
+  var text = run.querySelector(".stage-text"), bar = document.querySelector(".bar");
+  var f = document.getElementById("hero-ph"), m = document.getElementById("hero-mob");
+  var kick = text.querySelector(".pro-kicker") || text, title = text.querySelector(".pro-pos") || text, duo = text.querySelector(".duo");
+  var mode = "", R = 0, stick = 0, T0 = 0, cur = -1, signed = false, lastW = 0;
+  var rel0 = 0, rel1 = 0, W0 = 0, H0 = 0, S = 0;                 /* grand écran */
+  var mW = 0, mH = 0, mS = 120;                                   /* mobile */
+  var target = null, imgs = [], cv = null;
+  function measure() {
+    lastW = window.innerWidth;
+    mode = (f && getComputedStyle(f).display !== "none") ? "d" : (m && getComputedStyle(m).display !== "none") ? "m" : "";
+    if (!mode) { run.style.setProperty("--run", "0px"); return; }
+    target = mode === "d" ? f : m; imgs = [].slice.call(target.querySelectorAll("img")); cv = target.querySelector(".hero-sig");
+    var vh = window.innerHeight, hb = bar ? bar.offsetHeight : 64;
+    if (mode === "d") {
+      f.style.width = ""; f.style.height = ""; f.style.top = "0px";
+      var tr = text.getBoundingClientRect(), kr = kick.getBoundingClientRect(), dr = duo.getBoundingClientRect(), r = f.getBoundingClientRect();
+      rel0 = kr.top - tr.top; W0 = r.width; H0 = r.height; S = Math.max(150, Math.min(200, W0 * 0.46));
+      rel1 = Math.max(rel0, dr.bottom - tr.top - S);
+      R = Math.round(vh * 0.7); stick = Math.min(hb + 2, vh - text.offsetHeight - 16);
+    } else {
+      mW = Math.min(window.innerWidth * 0.7, 300); mH = mW * 1.25;
+      m.style.setProperty("--mw", mW + "px"); m.style.setProperty("--mh", mH + "px");
+      var tr2 = text.getBoundingClientRect(), pr = title.getBoundingClientRect();
+      R = Math.round(vh * 0.6); stick = hb + 8 - (pr.top - tr2.top);
+    }
+    run.style.setProperty("--run", R + "px"); run.style.setProperty("--stick", stick + "px");
+    T0 = run.getBoundingClientRect().top + window.scrollY;
   }
-  function init() { if (measure()) { signed = false; f.classList.remove("signed"); update(); } }
-  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener("resize", init);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+  function update() {
+    if (!mode) return;
+    var S0 = T0 - stick, d = Math.min(R, Math.max(0, window.scrollY - S0)), q = reduce ? (window.scrollY > S0 + 4 ? 1 : 0) : d / R, e = ease(q);
+    if (mode === "d") {
+      f.style.top = (rel0 + (rel1 - rel0) * e) + "px";
+      f.style.width = (W0 + (S - W0) * e) + "px"; f.style.height = (H0 + (S - H0) * e) + "px";
+    } else {
+      m.style.setProperty("--mw", (mW + (mS - mW) * e) + "px"); m.style.setProperty("--mh", (mH + (mS - mH) * e) + "px");
+    }
+    cur = pick(imgs, q, cur);
+    if (q >= .85 && !signed) { signed = true; target.classList.add("signed"); if (window.signOn) window.signOn(cv, "#FFF133"); }
+    else if (q < .7 && signed) { signed = false; target.classList.remove("signed"); if (window.signOff) window.signOff(cv); }
+  }
+  var tk = false;
+  window.addEventListener("scroll", function () { if (!tk) { tk = true; requestAnimationFrame(function () { tk = false; update(); }); } }, { passive: true });
+  function init() { var y = window.scrollY; measure(); if (signed && target) { target.classList.remove("signed"); signed = false; } cur = -1; update(); }
+  window.addEventListener("resize", function () { if (window.innerWidth !== lastW) init(); });
   window.addEventListener("load", init);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+  if (window.ResizeObserver) { var lastH = 0; new ResizeObserver(function () { if (mode === "d" && Math.abs(text.offsetHeight - lastH) > 2) { lastH = text.offsetHeight; measure(); update(); } }).observe(text); }
   init();
 })();
