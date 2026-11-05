@@ -463,6 +463,15 @@ html.leaving body { opacity: 0; transition: opacity 300ms ease; }
 .curve-hint i { width: 10px; height: 10px; flex: 0 0 auto; background: var(--jaune); box-shadow: 0 0 0 2px var(--fg); }
 :root.pro body .curve-hint i { border-radius: 50% !important; }
 .curve-hint .h-m { display: none; }
+.gap-lbl { position: absolute; z-index: 2; display: grid; gap: 2px; max-width: 210px; text-align: right; font-family: var(--f-texte); font-size: 13px; line-height: 1.3; color: var(--soft); pointer-events: none; transition: opacity 400ms var(--ease); }
+.gap-lbl b { color: var(--fg); font-weight: 700; }
+.gap-lbl b::after { content: " →"; }
+.gap-lbl.mob { display: block; max-width: none; text-align: left; font-size: 12px; }
+.gap-lbl.mob b::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 6px; background: var(--jaune); vertical-align: 0; }
+.gap-lbl.mob b::after { content: " : "; }
+.gap-lbl .g-m, .gap-lbl.mob .g-d { display: none; }
+.gap-lbl.mob .g-m { display: inline; }
+:root[data-lecture="terrain"] .gap-lbl { opacity: 0; }
 @media (hover: none) { .curve-hint .h-d { display: none; } .curve-hint .h-m { display: inline; } }
 .curve.used .curve-hint, .lanes.used .curve-hint { opacity: .45; }
 :root[data-lecture="terrain"] .curve .curve-hint { opacity: 0; }

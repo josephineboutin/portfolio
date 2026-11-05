@@ -102,6 +102,7 @@
       fill: true,
       bands: [[0, 0.16, "Innovateurs, 2,5 %"], [0.16, 0.33, "Premiers adeptes, 13,5 %"], [0.33, 0.5, "Majorité précoce, 34 %"], [0.5, 0.67, "Majorité tardive, 34 %"], [0.67, 1, "Retardataires, 16 %"]],
       gap: [0.318, 0.342],
+      gapLabel: ["Le fossé (Moore, 1991)", "Le cap entre les premiers adeptes et la majorité, en plein pendant mon stage", "où se jouait mon stage"],
       title: "Courbe d'adoption d'une innovation (Rogers, 1962)",
       axisY: "Nombre de surfeurs qui adoptent la planche",
       axisX: "Le temps",
@@ -328,7 +329,7 @@
         var ra = (mix - 0.6) / 0.4, target = null;
         if (TP) {
           /* Newave : la planche monte et descend la face de la vague, sous la lèvre */
-          var swing = 0.5 - 0.5 * Math.cos(time * 0.7), ii = Math.round(crestIdx - 46 + 34 * swing);
+          var swing = 0.5 - 0.5 * Math.cos(time * 0.7), ii = Math.round(crestIdx + 36 + 16 * swing);
           ii = Math.max(2, Math.min(N - 3, ii));
           var A1 = pt(ii, 1), A2 = pt(ii + 2, 1);
           target = { x: x(A1.u), y: Y(A1.v) - 4, a: Math.atan2(Y(A2.v) - Y(A1.v), x(A2.u) - x(A1.u)) };
@@ -363,6 +364,7 @@
       tickEls.forEach(function (el) { el.style.left = x(+el.dataset.u) + "px"; el.style.top = (Y(0) + 26) + "px"; });
       if (axisEls[0]) { axisEls[0].style.right = M + "px"; axisEls[0].style.top = (Y(1) - 34) + "px"; }
       if (axisEls[1]) { axisEls[1].style.right = M + "px"; axisEls[1].style.top = (Y(0) + (W < 700 ? 50 : 26)) + "px"; }
+      if (gapEl) { gapEl.classList.toggle("mob", W < 760); if (W < 760) { gapEl.style.right = "auto"; gapEl.style.left = M + "px"; gapEl.style.top = (Y(0) + 22) + "px"; } else { gapEl.style.left = "auto"; gapEl.style.right = (W - x(cfg.gap[0]) + 12) + "px"; gapEl.style.top = (Y(1) - 4) + "px"; } }
       if (legendEl) { legendEl.style.top = (Y(0) + 54) + "px"; legendEl.style.left = M + "px"; }
       if (titleEl) { titleEl.style.top = (pad.t - 72) + "px"; titleEl.style.left = M + "px"; }
       if (openPin !== null) placeTip(openPin);
@@ -412,6 +414,12 @@
       if (!t) return;
       var el = document.createElement("span"); el.className = "axis"; el.textContent = k ? t + " →" : "↑ " + t; el.setAttribute("aria-hidden", "true"); host.appendChild(el); axisEls[k] = el;
     });
+    var gapEl = null;
+    if (cfg.gapLabel) {
+      gapEl = document.createElement("span"); gapEl.className = "gap-lbl"; gapEl.setAttribute("aria-hidden", "true");
+      gapEl.innerHTML = "<b></b><span class='g-d'></span><span class='g-m'></span>"; gapEl.querySelector("b").textContent = cfg.gapLabel[0]; gapEl.querySelector(".g-d").textContent = cfg.gapLabel[1]; gapEl.querySelector(".g-m").textContent = cfg.gapLabel[2];
+      host.appendChild(gapEl);
+    }
     if (cfg.title) {
       titleEl = document.createElement("h2"); titleEl.className = "titre curve-title"; titleEl.textContent = cfg.title; host.appendChild(titleEl);
       var hintEl = document.createElement("span"); hintEl.className = "curve-hint"; hintEl.setAttribute("aria-hidden", "true"); hintEl.innerHTML = '<i></i><span class="h-d">Survolez ou cliquez sur les points pour en savoir plus</span><span class="h-m">Touchez les points pour en savoir plus</span>'; titleEl.appendChild(hintEl);
